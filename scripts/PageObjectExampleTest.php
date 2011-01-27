@@ -6,6 +6,8 @@ require_once 'landingPage.php';
 class PageObjectExample extends CustomTestCase {
   /**
   * @test
+  * @group shallow
+  * @group authentication
   */
   public function example()
   {

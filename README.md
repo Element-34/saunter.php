@@ -160,8 +160,14 @@ to _true_ and adjusting for which OS and browser combination you desire. Unlike 
 
 Notice as well that in the intermediary class, the teardown method will set the OnDemand job name and status as well.
 
+Groups
+------
+
+My current favourite way of managing scripts is not through the use of hierarchical  directories organized by functionality or persona but by 'tag'. Or since this is a framework expected to be run by PHPUnit, the use of [Groups](http://www.phpunit.de/manual/current/en/appendixes.annotations.html#appendixes.annotations.group).
+
+Tagging your scripts nicely deals with the whole venn diagram problem of where in their hierarchy to stuff things. Now it doesn't matter.
+
 TO-DO
 -----
-* Groups
 * Logging
 
