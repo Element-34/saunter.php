@@ -12,7 +12,11 @@ class LoginPage extends BasePage {
   );
 
   function __construct() {
-    $this->selenium = SeleniumConnection::getInstance()->selenium;
+    parent::__construct();
+  }
+
+  function __destruct() {
+    parent::__destruct();
   }
   
   function __set($property, $value) {

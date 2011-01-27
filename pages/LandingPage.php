@@ -10,7 +10,11 @@ class LandingPage extends BasePage {
   );
 
   function __construct() {
-    $this->selenium = SeleniumConnection::getInstance()->selenium;
+    parent::__construct();
+  }
+  
+  function __destruct() {
+    parent::__destruct();
   }
   
   function open_default_base_url() {

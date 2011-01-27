@@ -16,7 +16,6 @@ class PageObjectExample extends CustomTestCase {
     $form->password = "buttress";
     $form->login();
     $this->assertEquals($form->error_message, "Incorrect username or password.");
-    sleep(3);
   }
 }
 ?>
