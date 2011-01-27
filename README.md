@@ -142,6 +142,5 @@ TO-DO
 -----
 * Groups
 * Logging
-* Loading 'stuff' from config files
 * Sauce Labs OnDemand integration
 
