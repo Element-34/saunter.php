@@ -138,6 +138,17 @@ One thing that drove me bonkers for a month or so was the test discovery of PHPU
 
 With the class marked as abstract, PHP won't try to create an instance of it which has a nice side effect of meaning discovery skips over it.
 
+Config Files
+------------
+
+In the _conf_ directory there is a settings.inc.default file. Taking a page from the RoR playbook, this file should be copied and renamed to just settings.inc. The stacktrace you will get if you forget should remind you to do this. The reason settings.inc is not checked in is so you can have different configs across different locations (like individual jobs in the CI server) or same location (one per environment and managed via symlink).
+
+All system/framework-wide configurations should go in this file. Rather than _completely_ pollute the global namespace I put everything into a settings array.
+
+    $GLOBALS['settings']
+
+You're stuff should do the same.
+
 TO-DO
 -----
 * Groups
