@@ -30,4 +30,7 @@
       $GLOBALS['settings']['seleniumserver'] = "localhost";
       $GLOBALS['settings']['seleniumport'] = 4444;
   }
+  
+  date_default_timezone_set('America/New_York');
+  $GLOBALS['settings']['logname'] = 'logs/' . date('Y-m-d-h-i-s') . '.log';
 ?>

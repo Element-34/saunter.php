@@ -167,7 +167,13 @@ My current favourite way of managing scripts is not through the use of hierarchi
 
 Tagging your scripts nicely deals with the whole venn diagram problem of where in their hierarchy to stuff things. Now it doesn't matter.
 
+Logging
+-------
+
+Logging is done through the standard [Log PEAR package](http://pear.php.net/package/Log).
+
 TO-DO
 -----
-* Logging
+* Data Providers (PHPUnit native)
+* Data Providers (Non-PHPUnit native)
 
