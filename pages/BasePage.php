@@ -1,4 +1,7 @@
 <?php
+
+require_once 'settings.inc';
+
 class BasePage {
   
   public static $string_timeout = "30000"; // 30 seconds

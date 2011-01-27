@@ -1,5 +1,5 @@
 <phpunit>
   <php>
-    <includePath>./includes:./pages</includePath>
+    <includePath>./includes:./pages:./conf</includePath>
   </php>
 </phpunit>

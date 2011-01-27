@@ -1,0 +1,13 @@
+<?php
+  $sites = array(
+    "development" => "http://localhost",
+    "qa" => "http://qa.mycompany.com",
+    "staging" => "http://stage.mycompany.com",
+    "production" => "http://www.mycompany.com"
+  );
+
+  $GLOBALS['settings']['webserver'] = $sites["default"];
+  $GLOBALS['settings']['browser'] = "*safari";
+  $GLOBALS['settings']['seleniumserver'] = "localhost";
+  $GLOBALS['settings']['seleniumport'] = 4444;
+?>

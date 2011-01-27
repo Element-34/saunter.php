@@ -8,10 +8,10 @@ class SeleniumConnection {
 
   private function __construct() {
     // this would normally be driven by a config file
-    $this->selenium = new Testing_Selenium("*firefox",
-                                           "http://saucelabs.com/",
-                                           "localhost",
-                                           "4444");
+    $this->selenium = new Testing_Selenium($GLOBALS['settings']['browser'],
+                                           $GLOBALS['settings']['webserver'],
+                                           $GLOBALS['settings']['seleniumserver'],
+                                           $GLOBALS['settings']['seleniumport']);
   }
 
   public static function getInstance() 
