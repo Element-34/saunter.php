@@ -13,10 +13,6 @@ class LandingPage extends BasePage {
     parent::__construct();
   }
   
-  function __destruct() {
-    parent::__destruct();
-  }
-  
   function open_default_base_url() {
     $this->selenium->open("/");
   }

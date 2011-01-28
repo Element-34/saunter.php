@@ -170,10 +170,15 @@ Tagging your scripts nicely deals with the whole venn diagram problem of where i
 Logging
 -------
 
-Logging is done through the standard [Log PEAR package](http://pear.php.net/package/Log).
+Logging is done through the standard [Log PEAR package](http://pear.php.net/package/Log). Use logging intelligently in your scripts. As in, use it _very_ sparingly. I coach people to basically only use it to log things that matter and were randomly generated (like usernames, passwords, email addresses) that could assist in debugging a script failure.
+
+Data Driving
+------------
+
+PHPUnit can drive a test method with parameters returned from a method; either as an array of arrays or as an Iterator object. (Though so far as I can tell, no one has actually done the latter -- or at least written about it.) _SimpleDataProviderTest.php_ follows the array or arrays pattern. In theory, the other approach would be for CSV or DB queries -- someone point me to the blog post which explain this approach.
 
 TO-DO
 -----
 * Data Providers (PHPUnit native)
-* Data Providers (Non-PHPUnit native)
-
+* Oracles (curl)
+* Oracles (db)

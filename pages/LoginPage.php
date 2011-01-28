@@ -8,15 +8,11 @@ class LoginPage extends BasePage {
     "username" => "username",
     "password" => "password",
     "submit_button" => "submit",
-    "error_message" => "css=div.error > p"
+    "error_message" => "css=div.error p:nth(0)"
   );
 
   function __construct() {
     parent::__construct();
-  }
-
-  function __destruct() {
-    parent::__destruct();
   }
   
   function __set($property, $value) {
@@ -46,9 +42,14 @@ class LoginPage extends BasePage {
     $this->waitForElementAvailable($this->locators['username']);
   }
 
-  function login() {
+  function login($should_pass = True) {
     $this->selenium->click($this->locators['submit_button']);
     $this->selenium->waitForPageToLoad(parent::$string_timeout);
+    if ($should_pass) {
+      // load and return the account object
+    } else {
+      $this->waitForElementAvailable($this->locators['error_message']);      
+    }
   }
 }
 
