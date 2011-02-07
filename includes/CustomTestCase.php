@@ -7,6 +7,7 @@ require_once 'Log.php';
 abstract class CustomTestCase extends PHPUnit_Framework_TestCase {
   
   public function setUp() {
+
     $this->verificationErrors = array();
     $this->log = Log::singleton('file', $GLOBALS['settings']['logname'], $this->name);
     $this->selenium = SeleniumConnection::getInstance()->selenium;
@@ -23,13 +24,27 @@ abstract class CustomTestCase extends PHPUnit_Framework_TestCase {
   {
     if ($GLOBALS['settings']['sauce.ondemand'] == "true")
     {   
+        // job name
         $context = array("name" => $this->getName());
+
+        // job result
         if ($this->status == PHPUnit_Runner_BaseTestRunner::STATUS_PASSED) {
           $context["passed"] = True;
         } else {
           $context["passed"] = False;
         }
 
+        // job tags
+        $reflector = new ReflectionMethod($this, $this->name);
+        preg_match_all("(@group .*)", $reflector->getDocComment(), $raw_tags);
+        if (count($raw_tags[0]) > 0) {
+          $context["tags"] = array();
+          foreach ($raw_tags[0] as $raw_tag) {
+            $split_tag = split(" ", $raw_tag);
+            array_push($context["tags"], $split_tag[1]);
+          }
+        }
+        
         $jsonContext = json_encode($context);
         $this->selenium->setContext("sauce: job-info=$jsonContext");
     }

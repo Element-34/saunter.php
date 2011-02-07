@@ -167,6 +167,8 @@ My current favourite way of managing scripts is not through the use of hierarchi
 
 Tagging your scripts nicely deals with the whole venn diagram problem of where in their hierarchy to stuff things. Now it doesn't matter.
 
+The @group names are now used with Sauce OnDemand as job tags.
+
 Logging
 -------
 
