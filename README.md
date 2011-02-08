@@ -174,6 +174,22 @@ Logging
 
 Logging is done through the standard [Log PEAR package](http://pear.php.net/package/Log). Use logging intelligently in your scripts. As in, use it _very_ sparingly. I coach people to basically only use it to log things that matter and were randomly generated (like usernames, passwords, email addresses) that could assist in debugging a script failure.
 
+Soft Asserts
+------------
+
+Selenium IDE has this notion of verify* which are apparently what are called 'soft asserts' as they look like an assert but don't end the script immediately. The Testing/Selenium driver also does not have this notion but by wrapping an assert in a try/catch block you can create this behaviour. Because we have subclassed PHPUnit_Framework_TestCase as CustomTestCase we can put the verify* commands that we need there.
+
+    public function verifyEquals($want, $got)
+    {
+      try {
+          $this->assertEquals($want, $got);
+      } catch (PHPUnit_Framework_AssertionFailedError $e) {
+          array_push($this->verificationErrors, $e->toString());
+      }
+    }
+
+I believe that the PHPUnit driver includes a number of these verify commands already, but I tend to only create them as I need them so one project might have a some and a different project might need others.
+
 Data Driving
 ------------
 
