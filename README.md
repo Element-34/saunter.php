@@ -169,6 +169,11 @@ Tagging your scripts nicely deals with the whole venn diagram problem of where i
 
 The @group names are now used with Sauce OnDemand as job tags.
 
+Suites
+------
+
+Some more OnDemand magic is that you can filter your job list by 'tag'. Since we're using test discovery based on tags there is not an easy way to look at 'all the jobs in a certain run' but there is a clever hack around that by creating a run specific tag. In this example is it uniqid with a prefix of 'run-'. Again, its a Singleton, but we really want it to be the same across all instances of our scripts (which is what Singletons are for). Now we can login to Sauce Labs and filter on the appropriate 'run' tag to see all our scripts.
+
 Logging
 -------
 
