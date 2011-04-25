@@ -1,5 +1,8 @@
 <phpunit>
   <php>
-    <includePath>./includes:./pages:./conf</includePath>
+    <includePath>./includes:./pages:./conf:./listeners</includePath>
   </php>
+  <listeners>
+    <listener class="StatusListener" file="listeners/StatusListener.php" />
+  </listeners>
 </phpunit>

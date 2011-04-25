@@ -117,11 +117,10 @@ Now your locators truly are _change in one spot and fix all the broken-ness_. DR
 Sharing the server connection
 -----------------------------
 
-It has been pointed out to me that what I have done to share the established connection/session to the Se server is borderline evil, but I understand it which trumps evil in my books. In order to make sure we can send / receive from the Se server, I make the connection to it a Singleton which gets set as a class property in its constructor.
+It has been pointed out to me that what I have done to share the established connection/session to the Se server is borderline evil, but I understand it which trumps evil in my books. In order to make sure we can send / receive from the Se server, I make the connection to it a Singleton which gets set as a in the base PO constructor.
 
-    function __construct() {
-      $this->selenium = SeleniumConnection::getInstance()->selenium;
-    } 
+    def __init__(self):
+        self.se = wrapper().connection
 
 Apparently what I wanted was to use Dependency Injection but I only really understood it last weekend so this works -- if slightly evil.
 
@@ -199,6 +198,17 @@ Data Driving
 ------------
 
 PHPUnit can drive a test method with parameters returned from a method; either as an array of arrays or as an Iterator object. (Though so far as I can tell, no one has actually done the latter -- or at least written about it.) _SimpleDataProviderTest.php_ follows the array or arrays pattern. In theory, the other approach would be for CSV or DB queries -- someone point me to the blog post which explain this approach.
+
+Listeners
+---------
+
+Standard xUnit workflow is setup -> script -> teardown. The integration with Sauce Labs OnDemand used to sit in the teardown phase of this, but due to a recent change in PHPUnit, it needs to be moved into a custom listener. The workflow is now:
+* setup (includes/CustomTestCase.php)
+* script (scripts/*)
+* assertPostConditions (includes/CustomTestCase.php)
+* tardown (includes/CustomTestCase.php)
+* add* (listeners/StatusListener.php)
+* endtest (listeners/StatusListener.php)
 
 TO-DO
 -----
