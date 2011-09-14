@@ -6,20 +6,70 @@
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
-    <name>Saunter.PHP</name>
-    <channel>element-34.github.com</channel>
+    <name>SaunterPHP</name>
+    <channel>element-34.github.com/pear</channel>
     <summary>An opinionated Selenium based automation framework</summary>
+    <description>A description goes here</description>
     <lead>
         <name>Adam Goucher</name>
+        <user>adamgoucher</user>
+        <email>adam@element34.ca</email>
+        <active>yes</active>
     </lead>
-    <version>0.1.0</version>
-    <stability>alpha</stability>
+    <date>2011-09-14</date>
+    <version>
+        <release>0.1.0</release>
+        <api>0.1.0</api>
+    </version>
+    <stability>
+        <release>alpha</release>
+        <api>alpha</api>
+    </stability>
     <license>Apache 2</license>
+    <notes>Some notes go here</notes>
     <contents>
-        <dir>saunter</dir>
+        <dir name="/">
+            <dir name="SaunterPHP">
+                <dir name="Framework">
+                    <dir name="Listeners">
+                        <file baseinstalldir="/" name="StatusListener.php" role="php">
+                            <tasks:replace from="@package_version@" to="version" type="package-info" />
+                        </file>
+                    </dir>
+                    <dir name="PO">
+                        <dir name="RemoteControl">
+                            <file baseinstalldir="/" name="Page.php" role="php">
+                                <tasks:replace from="@package_version@" to="version" type="package-info" />
+                            </file>
+                        </dir>
+                    </dir>
+                    <file baseinstalldir="/" name="SaunterTestCase.php" role="php">
+                        <tasks:replace from="@package_version@" to="version" type="package-info" />
+                    </file>
+                    <file baseinstalldir="/" name="SeleniumConnection.php" role="php">
+                        <tasks:replace from="@package_version@" to="version" type="package-info" />
+                    </file>
+                    <file baseinstalldir="/" name="SuiteIdentifier.php" role="php">
+                        <tasks:replace from="@package_version@" to="version" type="package-info" />
+                    </file>                
+                </dir>
+            </dir>
+            <file baseinstalldir="/" name="LICENSE" role="doc"/>
+            <file baseinstalldir="/" name="saunter.php" role="script">
+                <tasks:replace from="/usr/bin/env php" to="php_bin" type="pear-config"/>
+                <tasks:replace from="@php_bin@" to="php_bin" type="pear-config" />
+                <tasks:replace from="@package_version@" to="version" type="package-info" />
+            </file>
+        </dir>
     </contents>
     <dependencies>
         <required>
+            <php>
+                <min>5.2.7</min>
+            </php>
+            <pearinstaller>
+                <min>1.9.2</min>
+            </pearinstaller>
             <package>
                 <name>PHPUnit</name>
                 <channel>pear.phpunit.de</channel>
@@ -29,8 +79,7 @@
     </dependencies>
     <phprelease>
         <filelist>
-            <install as="saunter.php" name="phpunit.php" />
-            <ignore name="saunter.bat" />
+            <install as="saunter.php" name="saunter.php" />
         </filelist>
     </phprelease>
 </package>

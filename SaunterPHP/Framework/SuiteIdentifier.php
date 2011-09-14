@@ -1,6 +1,6 @@
 <?php
 
-class SuiteIdentifier {
+class SaunterPHP_Framework_SuiteIdentifier {
   private static $m_pInstance; 
 
   private function __construct() {

@@ -5,7 +5,7 @@ require_once 'SuiteIdentifier.php';
 require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Log.php';
 
-abstract class CustomTestCase extends PHPUnit_Framework_TestCase {
+abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_TestCase {
   
   public function setUp() {
     $this->verificationErrors = array();

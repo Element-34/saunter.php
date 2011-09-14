@@ -2,7 +2,7 @@
 
 require_once 'Testing/Selenium.php';
 
-class SeleniumConnection {
+class SaunterPHP_Framework_SeleniumConnection {
   // Store the single instance of Selenium server 
   private static $m_pInstance; 
 

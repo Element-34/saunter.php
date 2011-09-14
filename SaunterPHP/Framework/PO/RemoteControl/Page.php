@@ -2,7 +2,7 @@
 
 require_once 'settings.inc';
 
-class BasePage {
+class SaunterPHP_Framework_PO_RemoteControl_Page {
   
   public static $string_timeout = "30000"; // 30 seconds
   

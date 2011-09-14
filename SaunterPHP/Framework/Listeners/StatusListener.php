@@ -1,6 +1,6 @@
 <?php
 
-class StatusListener implements PHPUnit_Framework_TestListener
+class SaunterPHP_Framework_Listeners_StatusListener implements PHPUnit_Framework_TestListener
 {
     public function addError(PHPUnit_Framework_Test $test, Exception $e, $time) {
         $test->execution_status = PHPUnit_Runner_BaseTestRunner::STATUS_ERROR;
