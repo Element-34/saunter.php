@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package version="2.0" xmlns="http://pear.php.net/dtd/package-2.0"
+    xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+    <name>Saunter.PHP</name>
+    <channel>element-34.github.com</channel>
+    <summary>An opinionated Selenium based automation framework</summary>
+    <lead>
+        <name>Adam Goucher</name>
+    </lead>
+    <version>0.1.0</version>
+    <stability>alpha</stability>
+    <license>Apache 2</license>
+    <contents>
+        <dir>saunter</dir>
+    </contents>
+    <dependencies>
+        <required>
+            <package>
+                <name>PHPUnit</name>
+                <channel>pear.phpunit.de</channel>
+                <min>3.5.15</min>
+            </package>
+        </required>
+    </dependencies>
+    <phprelease>
+        <filelist>
+            <install as="saunter.php" name="phpunit.php" />
+            <ignore name="saunter.bat" />
+        </filelist>
+    </phprelease>
+</package>
