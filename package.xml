@@ -3,9 +3,9 @@
     xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
-    http://pear.php.net/dtd/tasks-1.0.xsd
-    http://pear.php.net/dtd/package-2.0
-    http://pear.php.net/dtd/package-2.0.xsd">
+                        http://pear.php.net/dtd/tasks-1.0.xsd
+                        http://pear.php.net/dtd/package-2.0
+                        http://pear.php.net/dtd/package-2.0.xsd">
     <name>SaunterPHP</name>
     <channel>element-34.github.com/pear</channel>
     <summary>An opinionated Selenium based automation framework</summary>
@@ -16,10 +16,10 @@
         <email>adam@element34.ca</email>
         <active>yes</active>
     </lead>
-    <date>2011-09-14</date>
+    <date>2011-09-15</date>
     <version>
-        <release>0.1.0</release>
-        <api>0.1.0</api>
+        <release>0.1.1</release>
+        <api>0.1.1</api>
     </version>
     <stability>
         <release>alpha</release>
@@ -51,7 +51,23 @@
                     </file>
                     <file baseinstalldir="/" name="SuiteIdentifier.php" role="php">
                         <tasks:replace from="@package_version@" to="version" type="package-info" />
-                    </file>                
+                    </file>
+                </dir>
+                <dir name="Defaults">
+                    <dir name="conf">
+                        <file baseinstalldir="/" name="saucelabs.inc.default" role="php">
+                            <tasks:replace from="@package_version@" to="version" type="package-info" />
+                        </file>
+                        <file baseinstalldir="/" name="settings.inc.default" role="php">
+                            <tasks:replace from="@package_version@" to="version" type="package-info" />
+                        </file>
+                    </dir>
+                    <file baseinstalldir="/" name="phpunit.xml" role="php">
+                        <tasks:replace from="@package_version@" to="version" type="package-info" />
+                    </file>
+                    <file baseinstalldir="/" name="Location.php" role="php">
+                        <tasks:replace from="@package_version@" to="version" type="package-info" />
+                    </file>
                 </dir>
             </dir>
             <file baseinstalldir="/" name="LICENSE" role="doc"/>
