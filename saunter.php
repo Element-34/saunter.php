@@ -7,17 +7,33 @@ require_once 'SaunterPHP/Location.php';
 $location = new SaunterPHP_Location();
 $installed = $location->getLocation();
 
-function initialize() {
+function initialize($installed) {
     $defaults = $installed . '/Defaults';
     
     # conf
     if (! is_dir("conf")) {
         mkdir("conf");
     }
-    copy($installed . "/conf/settings.inc.default", "conf/settings.inc.default");
-    copy($installed . "/conf/saucelabs.inc.default", "conf/saucelabs.inc.default");
-    copy($installed . "/phpunit.xml", "phpunit.xml");    
+    copy($defaults . "/conf/settings.inc.default", "conf/settings.inc.default");
+    copy($defaults . "/conf/saucelabs.inc.default", "conf/saucelabs.inc.default");
 
+    copy($defaults . "/phpunit.xml", "phpunit.xml");
+    $status_listener = $installed . '/Framework/Listeners/StatusListener.php';
+    $xml = simplexml_load_file('phpunit.xml');
+
+    foreach ($xml->listeners->listener as $listener) {
+        if ($listener['class'] == 'SaunterPHP_Framework_Listeners_StatusListener') {
+            if ($listener['file'] != $status_listener) {
+                $dom = new DOMDocument('1.0');
+                $dom->preserveWhiteSpace = false;
+                $dom->formatOutput = true;
+                $listener['file'] = $status_listener;
+                $dom->loadXML($xml->asXML());
+                $dom->save('phpunit.xml');
+            }
+        }
+    }
+    
     if (! is_dir("scripts")) {
         mkdir("scripts");
     }
@@ -48,29 +64,19 @@ function copy_logfile(&$log_name) {
 }
 
 if (in_array("--new", $argv)) {
-    initialize();
+    initialize($installed);
     exit;
-}
-
-$status_listener = $installed . '/Framework/Listeners/StatusListener.php';
-$xml = simplexml_load_file('phpunit.xml');
-foreach ($xml->listeners->listener as $listener) {
-    if ($listener['class'] == 'SaunterPHP_Framework_Listeners_StatusListener') {
-        if ($listener['file'] != $status_listener) {
-            $dom = new DOMDocument('1.0');
-            $dom->preserveWhiteSpace = false;
-            $dom->formatOutput = true;
-            $listener['file'] = $status_listener;
-            $dom->loadXML($xml->asXML());
-            $dom->save('phpunit.xml');
-        }
-    }
 }
 
 $log_name = date("y-m-d-H-m-s");
 array_push($_SERVER['argv'], "--log-junit");
 array_push($_SERVER['argv'], "logs/" . $log_name . "xml");
 array_push($_SERVER['argv'], "scripts");
+
+/****
+ * the code in this block is covered under the Creative Commons Attribution 3.0 Unported License
+ * from phpunit that can be read at http://www.phpunit.de/manual/current/en/appendixes.copyright.html
+ */
 
 require_once 'PHP/CodeCoverage/Filter.php';
 PHP_CodeCoverage_Filter::getInstance()->addFileToBlacklist(__FILE__, 'PHPUNIT');
@@ -82,6 +88,10 @@ if (strpos('/opt/local/bin/php', '@php_bin') === 0) {
 require_once 'PHPUnit/Autoload.php';
 
 define('PHPUnit_MAIN_METHOD', 'PHPUnit_TextUI_Command::main');
+
+/*
+ * end phpunit licensed block
+ ****/
 
 register_shutdown_function('copy_logfile', &$log_name);
 PHPUnit_TextUI_Command::main();    

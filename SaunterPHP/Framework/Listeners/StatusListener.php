@@ -48,7 +48,10 @@ class SaunterPHP_Framework_Listeners_StatusListener implements PHPUnit_Framework
         }
 
         // fetching the stuff from the server doesn't require the connection anymore
-        $test->selenium->stop();
+        if (property_exists($test, "selenium")) {
+            $test->selenium->stop();            
+        }
+
 
         if ($GLOBALS['settings']['sauce.ondemand'])
         {

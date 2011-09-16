@@ -7,11 +7,11 @@
   );
 
   $GLOBALS['settings'] = array(
-    "sauce.ondemand" => "false"
+    "sauce.ondemand" => false
   );
 
   $GLOBALS['settings']['webserver'] = $sites["development"];
-  if ($GLOBALS['settings']['sauce.ondemand'] == "true")
+  if ($GLOBALS['settings']['sauce.ondemand'])
   {
       require_once("saucelabs.inc");
 

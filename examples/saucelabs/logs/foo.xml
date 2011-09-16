@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites>
-  <testsuite name="scripts" tests="1" assertions="2" failures="0" errors="0" time="12.125113">
-    <testsuite name="LoginTest" file="/Users/adam/work/saunter/saunter.php/examples/saucelabs/scripts/LoginTest.php" tests="1" assertions="2" failures="0" errors="0" time="12.125113">
-      <testcase name="basic_page_object_example" class="LoginTest" file="/Users/adam/work/saunter/saunter.php/examples/saucelabs/scripts/LoginTest.php" line="12" assertions="2" time="12.125113"/>
-    </testsuite>
-  </testsuite>
-</testsuites>

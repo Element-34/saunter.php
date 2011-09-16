@@ -1,6 +1,6 @@
 <phpunit>
   <php>
-    <includePath>./includes/pages:./includes/providers:./includes/tailored</includePath>
+    <includePath>./includes:./conf</includePath>
   </php>
   <listeners>
     <listener class="SaunterPHP_Framework_Listeners_StatusListener" />
