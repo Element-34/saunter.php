@@ -18,21 +18,7 @@ function initialize($installed) {
     copy($defaults . "/conf/saucelabs.inc.default", "conf/saucelabs.inc.default");
 
     copy($defaults . "/phpunit.xml", "phpunit.xml");
-    $status_listener = $installed . '/Framework/Listeners/StatusListener.php';
-    $xml = simplexml_load_file('phpunit.xml');
-
-    foreach ($xml->listeners->listener as $listener) {
-        if ($listener['class'] == 'SaunterPHP_Framework_Listeners_StatusListener') {
-            if ($listener['file'] != $status_listener) {
-                $dom = new DOMDocument('1.0');
-                $dom->preserveWhiteSpace = false;
-                $dom->formatOutput = true;
-                $listener['file'] = $status_listener;
-                $dom->loadXML($xml->asXML());
-                $dom->save('phpunit.xml');
-            }
-        }
-    }
+    reinitialize($installed);
     
     if (! is_dir("scripts")) {
         mkdir("scripts");
@@ -59,11 +45,34 @@ function initialize($installed) {
     }
 }
 
+function reinitialize($installed) {
+    $status_listener = $installed . '/Framework/Listeners/StatusListener.php';
+    $xml = simplexml_load_file('phpunit.xml');
+
+    foreach ($xml->listeners->listener as $listener) {
+        if ($listener['class'] == 'SaunterPHP_Framework_Listeners_StatusListener') {
+            if ($listener['file'] != $status_listener) {
+                $dom = new DOMDocument('1.0');
+                $dom->preserveWhiteSpace = false;
+                $dom->formatOutput = true;
+                $listener['file'] = $status_listener;
+                $dom->loadXML($xml->asXML());
+                $dom->save('phpunit.xml');
+            }
+        }
+    }
+}
+
 function copy_logfile(&$log_name) {
     copy("logs/" . $log_name . "xml", "logs/latest.xml");
 }
 
 if (in_array("--new", $argv)) {
+    reinitialize($installed);
+    exit;
+}
+
+if (in_array("--reset", $argv)) {
     initialize($installed);
     exit;
 }
