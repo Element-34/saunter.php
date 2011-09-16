@@ -1,9 +1,9 @@
 <?php
 
-require_once 'BasePage.php';
-require_once 'LoginPage.php';
+require_once 'SaunterPHP/Framework/PO/RemoteControl/Page.php';
+require_once 'pages/LoginPage.php';
 
-class LandingPage extends BasePage {
+class LandingPage extends SaunterPHP_Framework_PO_RemoteControl_Page {
   private $locators = array(
     "login" => "css=div.account_mast a:first",
     "signup" => "css=div.account_mast a:last"

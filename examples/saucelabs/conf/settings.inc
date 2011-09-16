@@ -1,6 +1,6 @@
 <?php
   $sites = array(
-    "development" => "http://localhost",
+    "development" => "http://saucelabs.com",
     "qa" => "http://qa.mycompany.com",
     "staging" => "http://stage.mycompany.com",
     "production" => "http://www.mycompany.com"
@@ -26,7 +26,7 @@
       $GLOBALS['settings']['seleniumport'] = 4444;
 
   } else {
-      $GLOBALS['settings']['browser'] = "*safari";
+      $GLOBALS['settings']['browser'] = "*firefox";
       $GLOBALS['settings']['seleniumserver'] = "localhost";
       $GLOBALS['settings']['seleniumport'] = 4444;
   }

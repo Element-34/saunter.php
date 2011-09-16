@@ -1,8 +1,9 @@
 <phpunit>
   <php>
-    <includePath>./includes:./pages:./conf:./listeners</includePath>
+    <includePath>./includes:./conf</includePath>
   </php>
   <listeners>
-    <listener class="StatusListener" file="listeners/StatusListener.php" />
+    <listener class="SaunterPHP_Framework_Listeners_StatusListener" 
+              file="/Users/adam/work/saunter/saunter.php/SaunterPHP/Framework/Listeners/StatusListener.php"/>
   </listeners>
 </phpunit>

@@ -8,7 +8,7 @@ class SaunterPHP_Framework_PO_RemoteControl_Page {
   
   // constructor
   function __construct() {
-       $this->selenium = SeleniumConnection::getInstance()->selenium;
+       $this->selenium = SaunterPHP_Framework_SeleniumConnection::getInstance()->selenium;
    }  
 
    public function waitForElementAvailable($element)

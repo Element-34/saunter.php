@@ -18,7 +18,7 @@ class SaunterPHP_Framework_SeleniumConnection {
   { 
       if (!self::$m_pInstance) 
       { 
-          self::$m_pInstance = new SeleniumConnection(); 
+          self::$m_pInstance = new SaunterPHP_Framework_SeleniumConnection(); 
       } 
 
       return self::$m_pInstance; 

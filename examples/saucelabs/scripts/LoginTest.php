@@ -1,9 +1,9 @@
 <?php
 
-require_once 'CustomTestCase.php';
-require_once 'LandingPage.php';
+require_once 'tailored/SauceTestCase.php';
+require_once 'pages/LandingPage.php';
 
-class PageObjectExample extends CustomTestCase {
+class LoginTest extends SauceTestCase {
   /**
   * @test
   * @group shallow

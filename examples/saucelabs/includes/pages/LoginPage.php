@@ -1,9 +1,8 @@
 <?php
 
-require_once 'BasePage.php';
-require_once 'SeleniumConnection.php';
+require_once 'SaunterPHP/Framework/PO/RemoteControl/Page.php';
 
-class LoginPage extends BasePage {
+class LoginPage extends SaunterPHP_Framework_PO_RemoteControl_Page {
   private $locators = array(
     "username" => "username",
     "password" => "password",

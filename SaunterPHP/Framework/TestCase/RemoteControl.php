@@ -1,7 +1,7 @@
 <?php
 
-require_once 'SeleniumConnection.php';
-require_once 'SuiteIdentifier.php';
+require_once 'SaunterPHP/Framework/SeleniumConnection.php';
+require_once 'SaunterPHP/Framework/SuiteIdentifier.php';
 require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Log.php';
 
@@ -9,8 +9,8 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_Te
   
   public function setUp() {
     $this->verificationErrors = array();
-    $this->log = Log::singleton('file', $GLOBALS['settings']['logname'], $this->name);
-    $this->selenium = SeleniumConnection::getInstance()->selenium;
+    $this->log = Log::singleton('file', $GLOBALS['settings']['logname'], $this->getName());
+    $this->selenium = SaunterPHP_Framework_SeleniumConnection::getInstance()->selenium;
     $this->selenium->start();
     $this->selenium->windowMaximize();
   }
