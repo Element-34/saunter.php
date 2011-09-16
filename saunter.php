@@ -43,6 +43,10 @@ function initialize() {
     }
 }
 
+function copy_logfile(&$log_name) {
+    copy("logs/" . $log_name . "xml", "logs/latest.xml");
+}
+
 if (in_array("--new", $argv)) {
     initialize();
     exit;
@@ -63,8 +67,9 @@ foreach ($xml->listeners->listener as $listener) {
     }
 }
 
+$log_name = date("y-m-d-H-m-s");
 array_push($_SERVER['argv'], "--log-junit");
-array_push($_SERVER['argv'], "logs/foo.xml");
+array_push($_SERVER['argv'], "logs/" . $log_name . "xml");
 array_push($_SERVER['argv'], "scripts");
 
 require_once 'PHP/CodeCoverage/Filter.php';
@@ -78,6 +83,7 @@ require_once 'PHPUnit/Autoload.php';
 
 define('PHPUnit_MAIN_METHOD', 'PHPUnit_TextUI_Command::main');
 
-PHPUnit_TextUI_Command::main();
+register_shutdown_function('copy_logfile', &$log_name);
+PHPUnit_TextUI_Command::main();    
 
 ?>
