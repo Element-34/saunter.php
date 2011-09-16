@@ -48,8 +48,21 @@ if (in_array("--new", $argv)) {
     exit;
 }
 
-$custom_listeners = $installed . '/Framework/Listeners';
-set_include_path(get_include_path() . PATH_SEPARATOR . $custom_listeners);
+$status_listener = $installed . '/Framework/Listeners/StatusListener.php';
+$xml = simplexml_load_file('phpunit.xml');
+foreach ($xml->listeners->listener as $listener) {
+    if ($listener['class'] == 'SaunterPHP_Framework_Listeners_StatusListener') {
+        if ($listener['file'] != $status_listener) {
+            $dom = new DOMDocument('1.0');
+            $dom->preserveWhiteSpace = false;
+            $dom->formatOutput = true;
+            $listener['file'] = $status_listener;
+            $dom->loadXML($xml->asXML());
+            $dom->save('phpunit.xml');
+        }
+    }
+}
+
 array_push($_SERVER['argv'], "--log-junit");
 array_push($_SERVER['argv'], "logs/foo.xml");
 array_push($_SERVER['argv'], "scripts");
