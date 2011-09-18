@@ -79,8 +79,12 @@ if (in_array("--reset", $argv)) {
 
 $log_name = date("y-m-d-H-m-s");
 array_push($_SERVER['argv'], "--log-junit");
-array_push($_SERVER['argv'], "logs/" . $log_name . "xml");
+array_push($_SERVER['argv'], "logs/" . $log_name . ".xml");
 array_push($_SERVER['argv'], "scripts");
+
+register_shutdown_function('copy_logfile', &$log_name);
+
+require_once 'conf/settings.inc';
 
 /****
  * the code in this block is covered under the Creative Commons Attribution 3.0 Unported License
@@ -98,11 +102,9 @@ require_once 'PHPUnit/Autoload.php';
 
 define('PHPUnit_MAIN_METHOD', 'PHPUnit_TextUI_Command::main');
 
+PHPUnit_TextUI_Command::main();    
 /*
  * end phpunit licensed block
  ****/
-
-register_shutdown_function('copy_logfile', &$log_name);
-PHPUnit_TextUI_Command::main();    
 
 ?>

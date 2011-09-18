@@ -49,7 +49,7 @@ class SaunterPHP_Framework_Listeners_StatusListener implements PHPUnit_Framework
 
         // fetching the stuff from the server doesn't require the connection anymore
         if (property_exists($test, "selenium")) {
-            $test->selenium->stop();            
+            $test::$selenium->stop();            
         }
 
 
