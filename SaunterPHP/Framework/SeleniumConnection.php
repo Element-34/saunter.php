@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Testing/Selenium.php';
+require_once 'SaunterPHP/Framework/Bindings/SaunterRemoteControl.php';
 
 class SaunterPHP_Framework_SeleniumConnection {
   // Store the single instance of Selenium server 
@@ -8,10 +8,10 @@ class SaunterPHP_Framework_SeleniumConnection {
 
   private function __construct() {
     // this would normally be driven by a config file
-    $this->selenium = new Testing_Selenium($GLOBALS['settings']['browser'],
-                                           $GLOBALS['settings']['webserver'],
-                                           $GLOBALS['settings']['seleniumserver'],
-                                           $GLOBALS['settings']['seleniumport']);
+    $this->selenium = new SaunterPHP_Framework_Bindings_SaunterRemoteControl($GLOBALS['settings']['browser'],
+                                                                             $GLOBALS['settings']['webserver'],
+                                                                             $GLOBALS['settings']['seleniumserver'],
+                                                                             $GLOBALS['settings']['seleniumport']);
   }
 
   public static function getInstance() 
