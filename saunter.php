@@ -64,7 +64,7 @@ function reinitialize($installed) {
 }
 
 function copy_logfile(&$log_name) {
-    copy("logs/" . $log_name . "xml", "logs/latest.xml");
+    copy("logs/" . $log_name . ".xml", "logs/latest.xml");
 }
 
 if (in_array("--new", $argv)) {
