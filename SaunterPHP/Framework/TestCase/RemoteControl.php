@@ -55,5 +55,17 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_Te
             array_push(self::$verificationErrors, $e->toString());
         }
     }
+    
+    public function verifyTrue($condition, $message = "") {
+        try {
+            $this->assertTrue($condition);
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            if ($message) {
+                array_push(self::$verificationErrors, $message);
+            } else {
+                array_push(self::$verificationErrors, $e->toString());
+            }
+        }
+    }
 }
 ?>
