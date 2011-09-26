@@ -18,8 +18,8 @@
     </lead>
     <date>2011-09-15</date>
     <version>
-        <release>0.1.6</release>
-        <api>0.1.6</api>
+        <release>0.1.7</release>
+        <api>0.1.7</api>
     </version>
     <stability>
         <release>alpha</release>
@@ -105,6 +105,11 @@
                 <name>Log</name>
                 <channel>pear.php.net</channel>
                 <min>1.12.6</min>
+            </package>
+            <package>
+                <name>Testing_Selenium</name>
+                <channel>pear.php.net</channel>
+                <max>0.4.3</max>
             </package>
         </required>
     </dependencies>
