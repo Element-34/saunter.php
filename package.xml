@@ -109,7 +109,7 @@
             <package>
                 <name>Testing_Selenium</name>
                 <channel>pear.php.net</channel>
-                <max>0.4.3</max>
+                <recommended>0.4.3</recommended>
             </package>
         </required>
     </dependencies>
