@@ -44,12 +44,14 @@ class SaunterPHP_Framework_Listeners_StatusListener implements PHPUnit_Framework
             }
 
             $jsonContext = json_encode($context);
-            $test->selenium->setContext("sauce: job-info=$jsonContext");
+            $test::$selenium->setContext("sauce: job-info=$jsonContext");
         }
 
         // fetching the stuff from the server doesn't require the connection anymore
         if (property_exists($test, "selenium")) {
-            $test::$selenium->stop();            
+            if (method_exists($test::$selenium, "stop")) {
+                $test::$selenium->stop();                
+            }
         }
 
 
