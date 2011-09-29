@@ -16,6 +16,8 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_Te
         self::$selenium = SaunterPHP_Framework_SeleniumConnection::getInstance()->selenium;
         self::$selenium->start();
         self::$selenium->windowMaximize();
+        
+        $this->sessionId = self::$selenium->getEval("selenium.sessionId");
     }
 
     // fired after the test run but before teardown
