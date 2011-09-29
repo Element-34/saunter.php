@@ -16,7 +16,7 @@ class SaunterPHP_Framework_Bindings_SaunterRemoteControl extends Testing_Seleniu
 
     public function is_ok($response) {
         if (substr($response, 0, 2) != "OK") {
-            throw new Testing_Selenium_Exception('Non OK response from Selenium Server');
+            throw new Testing_Selenium_Exception('Non OK response from Selenium Server: ' . $response);
         }
     }
     
