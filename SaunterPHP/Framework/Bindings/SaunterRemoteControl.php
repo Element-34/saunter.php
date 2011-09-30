@@ -8,6 +8,11 @@ class SaunterPHP_Framework_Bindings_SaunterRemoteControl extends Testing_Seleniu
         parent::__construct($browser, $url, $se_host, $se_port);
     }
     
+    public function start() {
+        parent::start();
+        $this->setTimeout($GLOBALS['timeouts']["str_ms"]);
+    }
+            
     public function doCommand($verb, $args = array()) {
         $response = parent::doCommand($verb, $args);
         $this->is_ok($response);

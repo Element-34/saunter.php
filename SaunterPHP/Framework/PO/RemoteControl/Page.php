@@ -4,22 +4,23 @@ require_once 'SaunterPHP/Framework/Exception.php';
 
 class SaunterPHP_Framework_PO_RemoteControl_Page {
   
-  public static $string_timeout = "30000"; // 30 seconds
-  public static $selenium;
-  
-  // constructor
-  function __construct() {
-      self::$selenium = SaunterPHP_Framework_SeleniumConnection::getInstance()->selenium;
-   }  
+    public static $string_timeout;
+    public static $selenium;
 
-   function __destruct() {
-       
-   }
+    // constructor
+    function __construct() {
+        self::$string_timeout = $GLOBALS['timeouts']["str_ms"];
+        self::$selenium = SaunterPHP_Framework_SeleniumConnection::getInstance()->selenium;
+    }  
 
-   public function waitForElementAvailable($element)
-   {
+    function __destruct() {
+   
+    }
+
+    public function waitForElementAvailable($element)
+    {
      for ($second = 0; ; $second++) {
-         if ($second >= 60) {
+         if ($second >= $GLOBALS['timeouts']["seconds"]) {
              throw new Saunter_Framework_Exception("timeout for element " . $element . " present");
          }
          try {
@@ -28,14 +29,14 @@ class SaunterPHP_Framework_PO_RemoteControl_Page {
          sleep(1);
      }
      for ($second; ; $second++) {
-         if ($second >= 60) {
-            throw new Saunter_Framework_Exception("timeout for element " . $element . " visibility");
+         if ($second >= $GLOBALS['timeouts']["seconds"]) {
+             throw new Saunter_Framework_Exception("timeout for element " . $element . " visibility");
          }
          try {
              if (self::$selenium->isVisible($element)) break;
          } catch (Exception $e) {}
          sleep(1);
      }
-   }
+    }
 }
 ?>
