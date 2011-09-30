@@ -18,8 +18,8 @@
     </lead>
     <date>2011-09-15</date>
     <version>
-        <release>0.1.9</release>
-        <api>0.1.9</api>
+        <release>0.1.10</release>
+        <api>0.1.10</api>
     </version>
     <stability>
         <release>alpha</release>
@@ -76,6 +76,9 @@
                         <tasks:replace from="@package_version@" to="version" type="package-info" />
                     </file>
                     <file baseinstalldir="/" name="SuiteIdentifier.php" role="php">
+                        <tasks:replace from="@package_version@" to="version" type="package-info" />
+                    </file>
+                    <file baseinstalldir="/" name="Exception.php" role="php">
                         <tasks:replace from="@package_version@" to="version" type="package-info" />
                     </file>
                 </dir>

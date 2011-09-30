@@ -1,5 +1,7 @@
 <?php
 
+require_once 'SaunterPHP/Framework/Exception.php';
+
 class SaunterPHP_Framework_PO_RemoteControl_Page {
   
   public static $string_timeout = "30000"; // 30 seconds
@@ -17,14 +19,18 @@ class SaunterPHP_Framework_PO_RemoteControl_Page {
    public function waitForElementAvailable($element)
    {
      for ($second = 0; ; $second++) {
-         if ($second >= 60) $this->fail("timeout for element " . $element . " present");
+         if ($second >= 60) {
+             throw new Saunter_Framework_Exception("timeout for element " . $element . " present");
+         }
          try {
              if (self::$selenium->isElementPresent($element)) break;
          } catch (Exception $e) {}
          sleep(1);
      }
      for ($second; ; $second++) {
-         if ($second >= 60) $this->fail("timeout for element " . $element . " visibility");
+         if ($second >= 60) {
+            throw new Saunter_Framework_Exception("timeout for element " . $element . " visibility");
+         }
          try {
              if (self::$selenium->isVisible($element)) break;
          } catch (Exception $e) {}
