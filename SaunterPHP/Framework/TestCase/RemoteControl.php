@@ -35,6 +35,15 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_Te
         }
     }
 
+    public function verifyCookieNotPresent($want)
+    {
+      try {
+          $this->assertTrue(!self::$selenium->isCookiePresent($want), $want . ' cookie is present.');
+      } catch (PHPUnit_Framework_AssertionFailedError $e) {
+          array_push(self::$verificationErrors, $e->toString());
+      }
+    }
+
     public function verifyElementAvailable($element) {
         try {
             $this->assertTrue(self::$selenium->isElementPresent($element), $element . ' element is not present.');
@@ -50,9 +59,86 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_Te
         }
     }
     
+    public function verifyElementNotPresent($element) {
+        try {
+            $this->assertTrue(!self::$selenium->isElementPresent($element), $element . ' element is present.');
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            array_push(self::$verificationErrors, $e->toString());
+        }
+    }
+    
     public function verifyEquals($want, $got) {
         try {
             $this->assertEquals($want, $got);
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            array_push(self::$verificationErrors, $e->toString());
+        }
+    }
+
+    public function verifyFalse($condition, $message = "") {
+        try {
+            $this->assertFalse($condition);
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            if ($message) {
+                array_push(self::$verificationErrors, $message);
+            } else {
+                array_push(self::$verificationErrors, $e->toString());
+            }
+        }
+    }
+    
+    public function verifyLocation($relativeURL) {
+        try {
+            $this->assertEquals($GLOBALS['settings']['webserver'] . $relativeURL, self::$selenium->getLocation(),  "URLs don't match with, " . $relativeURL);
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            array_push(self::$verificationErrors, $e->toString());
+        }
+    }
+
+    public function verifyNotEquals($want, $got) {
+        try {
+            $this->assertNotEquals($want, $got);
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            array_push(self::$verificationErrors, $e->toString());
+        }
+    }
+    
+    public function verifyNotLocation($relativeURL)
+    {
+      try {
+          $this->assertNotEquals($GLOBALS['settings']['webserver'] . $relativeURL, self::$selenium->getLocation(), "URLs still match with, " . $relativeURL);
+      } catch (PHPUnit_Framework_AssertionFailedError $e) {
+          array_push(self::$verificationErrors, $e->toString());
+      }
+    }
+    
+    public function verifyNotTextRegEx($element,$pattern) {
+        try {
+            $this->assertTrue(!(bool)preg_match($pattern,self::$selenium->getText($element)));
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            array_push(self::$verificationErrors, $e->toString());
+        }
+    }
+
+    public function verifyTextPresent($want) {
+        try {
+            $this->assertTrue(self::$selenium->isTextPresent($want), $want . ' Text is not present.');
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            array_push(self::$verificationErrors, $e->toString());
+        }
+    }
+
+    public function verifyTextNotPresent($want) {
+        try {
+            $this->assertTrue(!self::$selenium->isTextPresent($want), $want . ' Text is present.');
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            array_push(self::$verificationErrors, $e->toString());
+        }
+    }
+
+    public function verifyTextRegEx($element,$pattern) {
+        try {
+            $this->assertTrue((bool)preg_match($pattern,self::$selenium->getText($element)));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push(self::$verificationErrors, $e->toString());
         }
@@ -70,16 +156,5 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_Te
         }
     }
     
-    public function verifyFalse($condition, $message = "") {
-        try {
-            $this->assertFalse($condition);
-        } catch (PHPUnit_Framework_AssertionFailedError $e) {
-            if ($message) {
-                array_push(self::$verificationErrors, $message);
-            } else {
-                array_push(self::$verificationErrors, $e->toString());
-            }
-        }
-    }
 }
 ?>
