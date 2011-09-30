@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package SaunterPHP
+ */
 
 class SaunterPHP_Framework_SuiteIdentifier {
   private static $m_pInstance; 

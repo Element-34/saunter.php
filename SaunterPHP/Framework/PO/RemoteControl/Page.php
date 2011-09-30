@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package SaunterPHP
+ * @subpackage Framework_PO_RemoteControl
+ */
 
 require_once 'SaunterPHP/Framework/Exception.php';
 
@@ -21,7 +25,7 @@ class SaunterPHP_Framework_PO_RemoteControl_Page {
     {
      for ($second = 0; ; $second++) {
          if ($second >= $GLOBALS['timeouts']["seconds"]) {
-             throw new Saunter_Framework_Exception("timeout for element " . $element . " present");
+             throw new SaunterPHP_Framework_Exception("timeout for element " . $element . " present");
          }
          try {
              if (self::$selenium->isElementPresent($element)) break;
@@ -29,8 +33,8 @@ class SaunterPHP_Framework_PO_RemoteControl_Page {
          sleep(1);
      }
      for ($second; ; $second++) {
-         if ($second >= $GLOBALS['timeouts']["seconds"]) {
-             throw new Saunter_Framework_Exception("timeout for element " . $element . " visibility");
+         if ($second >= $GLOBALS['timeouts']["seconnds"]) {
+             throw new SaunterPHP_Framework_Exception("timeout for element " . $element . " visibility");
          }
          try {
              if (self::$selenium->isVisible($element)) break;

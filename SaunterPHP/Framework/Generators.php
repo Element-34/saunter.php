@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package SaunterPHP
+ */
 
 function randomString($length = 8) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyz';

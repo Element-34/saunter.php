@@ -1,0 +1,1218 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class SaunterPHP_Framework_Bindings_SaunterRemoteControl</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class SaunterPHP_Framework_Bindings_SaunterRemoteControl</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+		<p class="notes">
+			Located in <a class="field" href="_Framework---Bindings---SaunterRemoteControl.php.html">/Framework/Bindings/SaunterRemoteControl.php</a> (line <span class="field">6</span>)
+		</p>
+		
+				
+		<pre>Testing_Selenium
+   |
+   --SaunterPHP_Framework_Bindings_SaunterRemoteControl</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																																																																																																																																												
+												<div class="method-definition">
+											<span class="method-result">SaunterPHP_Framework_Bindings_SaunterRemoteControl</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$browser</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$url</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$se_host</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$se_port</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#addSelection" title="details" class="method-name">addSelection</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$optionLocator</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#as_number" title="details" class="method-name">as_number</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$response</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#check" title="details" class="method-name">check</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#click" title="details" class="method-name">click</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#clickAt" title="details" class="method-name">clickAt</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#contextMenu" title="details" class="method-name">contextMenu</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#contextMenuAt" title="details" class="method-name">contextMenuAt</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#doCommand" title="details" class="method-name">doCommand</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$verb</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$args</span> = <span class="var-default">array()</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#doubleClickAt" title="details" class="method-name">doubleClickAt</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getCssCount" title="details" class="method-name">getCssCount</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$css</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#is_ok" title="details" class="method-name">is_ok</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$response</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#keyDown" title="details" class="method-name">keyDown</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$keySequence</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#keyPress" title="details" class="method-name">keyPress</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$keySequence</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#keyUp" title="details" class="method-name">keyUp</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$keySequence</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#mouseDown" title="details" class="method-name">mouseDown</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#mouseDownAt" title="details" class="method-name">mouseDownAt</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#mouseDownRight" title="details" class="method-name">mouseDownRight</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#mouseDownRightAt" title="details" class="method-name">mouseDownRightAt</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#mouseMove" title="details" class="method-name">mouseMove</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#mouseMoveAt" title="details" class="method-name">mouseMoveAt</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#mouseOut" title="details" class="method-name">mouseOut</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#mouseUp" title="details" class="method-name">mouseUp</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#mouseUpAt" title="details" class="method-name">mouseUpAt</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#mouseUpRight" title="details" class="method-name">mouseUpRight</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#mouseUpRightAt" title="details" class="method-name">mouseUpRightAt</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#removeAllSelections" title="details" class="method-name">removeAllSelections</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#removeSelection" title="details" class="method-name">removeSelection</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$optionLocator</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#select" title="details" class="method-name">select</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$selectLocator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$optionLocator</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#start" title="details" class="method-name">start</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#type" title="details" class="method-name">type</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#typeKeys" title="details" class="method-name">typeKeys</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#uncheck" title="details" class="method-name">uncheck</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">7</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">SaunterPHP_Framework_Bindings_SaunterRemoteControl</span>
+		<span class="method-name">
+			__construct
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$browser</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$url</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$se_host</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$se_port</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$browser</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$url</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$se_host</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$se_port</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodaddSelection" id="addSelection"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">addSelection</span> (line <span class="line-number">156</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			addSelection
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$optionLocator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$optionLocator</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodas_number" id="as_number"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">as_number</span> (line <span class="line-number">28</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			as_number
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$response</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$response</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcheck" id="check"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">check</span> (line <span class="line-number">141</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			check
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodclick" id="click"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">click</span> (line <span class="line-number">37</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			click
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodclickAt" id="clickAt"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">clickAt</span> (line <span class="line-number">47</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			clickAt
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$coordString</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcontextMenu" id="contextMenu"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">contextMenu</span> (line <span class="line-number">42</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			contextMenu
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcontextMenuAt" id="contextMenuAt"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">contextMenuAt</span> (line <span class="line-number">57</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			contextMenuAt
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$coordString</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddoCommand" id="doCommand"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">doCommand</span> (line <span class="line-number">16</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			doCommand
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$verb</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$args</span> = <span class="var-default">array()</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$verb</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$args</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddoubleClickAt" id="doubleClickAt"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">doubleClickAt</span> (line <span class="line-number">52</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			doubleClickAt
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$coordString</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetCssCount" id="getCssCount"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getCssCount</span> (line <span class="line-number">32</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getCssCount
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$css</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$css</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodis_ok" id="is_ok"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">is_ok</span> (line <span class="line-number">22</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			is_ok
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$response</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$response</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodkeyDown" id="keyDown"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">keyDown</span> (line <span class="line-number">67</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			keyDown
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$keySequence</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$keySequence</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodkeyPress" id="keyPress"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">keyPress</span> (line <span class="line-number">62</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			keyPress
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$keySequence</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$keySequence</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodkeyUp" id="keyUp"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">keyUp</span> (line <span class="line-number">72</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			keyUp
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$keySequence</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$keySequence</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmouseDown" id="mouseDown"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">mouseDown</span> (line <span class="line-number">81</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mouseDown
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmouseDownAt" id="mouseDownAt"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">mouseDownAt</span> (line <span class="line-number">91</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mouseDownAt
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$coordString</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmouseDownRight" id="mouseDownRight"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">mouseDownRight</span> (line <span class="line-number">86</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mouseDownRight
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmouseDownRightAt" id="mouseDownRightAt"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">mouseDownRightAt</span> (line <span class="line-number">96</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mouseDownRightAt
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$coordString</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmouseMove" id="mouseMove"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">mouseMove</span> (line <span class="line-number">121</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mouseMove
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmouseMoveAt" id="mouseMoveAt"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">mouseMoveAt</span> (line <span class="line-number">126</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mouseMoveAt
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$coordString</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmouseOut" id="mouseOut"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">mouseOut</span> (line <span class="line-number">76</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mouseOut
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmouseUp" id="mouseUp"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">mouseUp</span> (line <span class="line-number">101</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mouseUp
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmouseUpAt" id="mouseUpAt"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">mouseUpAt</span> (line <span class="line-number">111</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mouseUpAt
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$coordString</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmouseUpRight" id="mouseUpRight"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">mouseUpRight</span> (line <span class="line-number">106</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mouseUpRight
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmouseUpRightAt" id="mouseUpRightAt"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">mouseUpRightAt</span> (line <span class="line-number">116</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mouseUpRightAt
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$coordString</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$coordString</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodremoveAllSelections" id="removeAllSelections"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">removeAllSelections</span> (line <span class="line-number">166</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			removeAllSelections
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodremoveSelection" id="removeSelection"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">removeSelection</span> (line <span class="line-number">161</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			removeSelection
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$optionLocator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$optionLocator</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodselect" id="select"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">select</span> (line <span class="line-number">151</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			select
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$selectLocator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$optionLocator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$selectLocator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$optionLocator</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodstart" id="start"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">start</span> (line <span class="line-number">11</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			start
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtype" id="type"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">type</span> (line <span class="line-number">131</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			type
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$value</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtypeKeys" id="typeKeys"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">typeKeys</span> (line <span class="line-number">136</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			typeKeys
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$value</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoduncheck" id="uncheck"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">uncheck</span> (line <span class="line-number">146</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			uncheck
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$locator</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$locator</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Sep 2011 23:38:08 -0400 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

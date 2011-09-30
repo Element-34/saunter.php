@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * @package SaunterPHP
+ * @subpackage Framework_TestCase
+ */
+ 
 require_once 'SaunterPHP/Framework/SeleniumConnection.php';
 require_once 'SaunterPHP/Framework/SuiteIdentifier.php';
 require_once 'PHPUnit/Framework/TestCase.php';
@@ -26,7 +30,14 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_Te
     }
   
     public function tearDown() { }
-  
+    
+    /**
+     * Verifies that the requested cookie has been set
+     *
+     * @param string $want
+     * @access public
+     * @return void
+     */
     public function verifyCookiePresent($want) {
         try {
             $this->assertTrue(self::$selenium->isCookiePresent($want),  $want . ' cookie is not present.');

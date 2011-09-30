@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * @package SaunterPHP
+ * @subpackage Framework_Listeners
+ */
+ 
 class SaunterPHP_Framework_Listeners_StatusListener implements PHPUnit_Framework_TestListener
 {
     public function addError(PHPUnit_Framework_Test $test, Exception $e, $time) {

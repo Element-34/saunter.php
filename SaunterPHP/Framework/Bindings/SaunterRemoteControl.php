@@ -1,4 +1,10 @@
 <?php
+/**
+ * Saunter's Remote Control binding
+ * 
+ * @package SaunterPHP
+ * @subpackage Framework_Bindings
+ */
 
 require_once 'Testing/Selenium.php';
 require_once 'SaunterPHP/Framework/Exception.php';
@@ -21,7 +27,7 @@ class SaunterPHP_Framework_Bindings_SaunterRemoteControl extends Testing_Seleniu
 
     public function is_ok($response) {
         if (substr($response, 0, 2) != "OK") {
-            throw new Saunter_Framework_Exception('Non OK response from Selenium Server: ' . $response);
+            throw new SaunterPHP_Framework_Exception('Non OK response from Selenium Server: ' . $response);
         }
     }
     

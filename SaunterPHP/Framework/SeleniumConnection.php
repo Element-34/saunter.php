@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @package SaunterPHP
+ */
+ 
 require_once 'SaunterPHP/Framework/Bindings/SaunterRemoteControl.php';
 
 class SaunterPHP_Framework_SeleniumConnection {
