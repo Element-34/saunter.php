@@ -14,7 +14,9 @@
   );
   
   $GLOBALS['settings'] = array(
-    "sauce.ondemand" => false
+    "sauce.ondemand" => True,
+    "sauce.get_video" => False,
+    "sauce.get_log" => False
   );
 
   $GLOBALS['settings']['webserver'] = $sites["production"];

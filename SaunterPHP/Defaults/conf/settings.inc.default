@@ -13,9 +13,11 @@
       "str_ms" => (string) $timeout * 1000
   );
 
-  $GLOBALS['settings'] = array(
-    "sauce.ondemand" => false
-  );
+    $GLOBALS['settings'] = array(
+      "sauce.ondemand" => False,
+      "sauce.get_video" => False,
+      "sauce.get_log" => False
+    );
 
   $GLOBALS['settings']['webserver'] = $sites["qa"];
   if ($GLOBALS['settings']['sauce.ondemand'])

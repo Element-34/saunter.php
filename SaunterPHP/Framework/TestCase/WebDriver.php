@@ -17,6 +17,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_Te
     public function setUp() {
         self::$verificationErrors = array();
         self::$log = Log::singleton('file', $GLOBALS['settings']['logname'], $this->getName());
+        
         self::$driver = SaunterPHP_Framework_SeleniumConnection::WebDriver();
         
         $this->sessionId = substr(self::$driver->getURL(), strrpos(self::$driver->getURL(), "/") + 1);

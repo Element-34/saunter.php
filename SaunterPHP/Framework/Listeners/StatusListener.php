@@ -26,6 +26,18 @@ class SaunterPHP_Framework_Listeners_StatusListener implements PHPUnit_Framework
     
     public function endTest(PHPUnit_Framework_Test $test, $time) {
         if (property_exists($test, "sessionId")) {
+            // fetching the stuff from the server doesn't require the connection anymore
+            if (property_exists($test, "selenium")) {
+                if (method_exists($test::$selenium, "stop")) {
+                    $test::$selenium->stop();                
+                }
+            }
+            if (property_exists($test, "driver")) {
+                if (method_exists($test::$driver, "close")) {
+                    $test::$driver->close();                
+                }
+            }
+            
             if ($GLOBALS['settings']['sauce.ondemand']) {
                 // job name
                 $context = array("name" => $test->getName());
@@ -48,22 +60,25 @@ class SaunterPHP_Framework_Listeners_StatusListener implements PHPUnit_Framework
                     }
                 }
 
-                $jsonContext = json_encode($context);
-                $test::$selenium->setContext("sauce: job-info=$jsonContext");
-            }
-
-            // fetching the stuff from the server doesn't require the connection anymore
-            if (property_exists($test, "selenium")) {
-                if (method_exists($test::$selenium, "stop")) {
-                    $test::$selenium->stop();                
+                $body = json_encode($context);
+                $fp = fopen('php://temp/maxmemory:256000', 'w');
+                if (!$fp) {
+                    die('could not open temp memory data');
                 }
+                fwrite($fp, $body);
+                fseek($fp, 0);
+                
+                $sauce_rest_handle = curl_init();
+                curl_setopt($sauce_rest_handle, CURLOPT_USERPWD,  $GLOBALS['saucelabs']['username'] . ":" . $GLOBALS['saucelabs']['key']);
+                curl_setopt($sauce_rest_handle, CURLOPT_URL, "https://saucelabs.com/rest/v1/" . $GLOBALS['saucelabs']['username'] . "/jobs/" . $test->sessionId);
+                curl_setopt($sauce_rest_handle, CURLOPT_HTTPHEADER, array("Content-Type: application/json")); 
+                curl_setopt($sauce_rest_handle, CURLOPT_PUT, 1);
+                curl_setopt($sauce_rest_handle, CURLOPT_INFILE, $fp);
+                curl_setopt($sauce_rest_handle, CURLOPT_INFILESIZE, strlen($body));
+                curl_setopt($sauce_rest_handle, CURLOPT_RETURNTRANSFER, True);
+                $result = curl_exec($sauce_rest_handle);
+                curl_close($sauce_rest_handle);
             }
-            if (property_exists($test, "driver")) {
-                if (method_exists($test::$driver, "close")) {
-                    $test::$driver->close();                
-                }
-            }
-
 
             if ($GLOBALS['settings']['sauce.ondemand'])
             {
