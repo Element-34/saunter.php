@@ -6,6 +6,13 @@
     "production" => "http://www.mycompany.com"
   );
 
+  $timeout = 45; // seconds
+  $GLOBALS['timeouts'] = array(
+      "seconds" => $timeout,
+      "ms" => $timeout * 1000,
+      "str_ms" => (string) $timeout * 1000
+  );
+
   $GLOBALS['settings'] = array(
     "sauce.ondemand" => false
   );

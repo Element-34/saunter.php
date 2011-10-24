@@ -14,11 +14,11 @@ class LandingPage extends SaunterPHP_Framework_PO_RemoteControl_Page {
   }
   
   function open_default_base_url() {
-    $this->selenium->open("/");
+    self::$selenium->open("/");
   }
   
   function open_sign_in_form() {
-    $this->selenium->click($this->locators['login']);
+    self::$selenium->click($this->locators['login']);
     $login_page = new LoginPage();
     $login_page->wait_until_loaded();
     return $login_page;

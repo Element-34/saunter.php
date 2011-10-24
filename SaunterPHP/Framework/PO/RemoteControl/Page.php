@@ -14,7 +14,7 @@ class SaunterPHP_Framework_PO_RemoteControl_Page {
     // constructor
     function __construct() {
         self::$string_timeout = $GLOBALS['timeouts']["str_ms"];
-        self::$selenium = SaunterPHP_Framework_SeleniumConnection::getInstance()->selenium;
+        self::$selenium = SaunterPHP_Framework_SeleniumConnection::RemoteControl();
     }  
 
     function __destruct() {
@@ -33,7 +33,7 @@ class SaunterPHP_Framework_PO_RemoteControl_Page {
          sleep(1);
      }
      for ($second; ; $second++) {
-         if ($second >= $GLOBALS['timeouts']["seconnds"]) {
+         if ($second >= $GLOBALS['timeouts']["seconds"]) {
              throw new SaunterPHP_Framework_Exception("timeout for element " . $element . " visibility");
          }
          try {

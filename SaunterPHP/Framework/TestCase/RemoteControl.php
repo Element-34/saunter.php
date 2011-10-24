@@ -17,7 +17,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_Te
     public function setUp() {
         self::$verificationErrors = array();
         self::$log = Log::singleton('file', $GLOBALS['settings']['logname'], $this->getName());
-        self::$selenium = SaunterPHP_Framework_SeleniumConnection::getInstance()->selenium;
+        self::$selenium = SaunterPHP_Framework_SeleniumConnection::RemoteControl();
         self::$selenium->start();
         self::$selenium->windowMaximize();
         

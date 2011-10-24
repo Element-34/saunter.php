@@ -19,7 +19,7 @@ class LoginPage extends SaunterPHP_Framework_PO_RemoteControl_Page {
       // cases can be stacked so all the 'text' ones here
       case "username":
       case "password":
-        $this->selenium->type($this->locators[$property], $value);
+        self::$selenium->type($this->locators[$property], $value);
         break;
       // if there were other types of elements like checks and selects
       // there would be another stack of cases here
@@ -31,7 +31,7 @@ class LoginPage extends SaunterPHP_Framework_PO_RemoteControl_Page {
   function __get($property) {
     switch($property) {
       case "error_message":
-        return $this->selenium->getText($this->locators[$property]);
+        return self::$selenium->getText($this->locators[$property]);
       default:
         return $this->$property;
     }
@@ -42,8 +42,8 @@ class LoginPage extends SaunterPHP_Framework_PO_RemoteControl_Page {
   }
 
   function login($should_pass = True) {
-    $this->selenium->click($this->locators['submit_button']);
-    $this->selenium->waitForPageToLoad(parent::$string_timeout);
+    self::$selenium->click($this->locators['submit_button']);
+    self::$selenium->waitForPageToLoad(parent::$string_timeout);
     if ($should_pass) {
       // load and return the account object
     } else {

@@ -58,6 +58,11 @@ class SaunterPHP_Framework_Listeners_StatusListener implements PHPUnit_Framework
                     $test::$selenium->stop();                
                 }
             }
+            if (property_exists($test, "driver")) {
+                if (method_exists($test::$driver, "close")) {
+                    $test::$driver->close();                
+                }
+            }
 
 
             if ($GLOBALS['settings']['sauce.ondemand'])
