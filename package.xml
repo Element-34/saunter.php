@@ -18,8 +18,8 @@
     </lead>
     <date>2011-09-15</date>
     <version>
-        <release>0.1.10</release>
-        <api>0.1.10</api>
+        <release>0.1.11</release>
+        <api>0.1.11</api>
     </version>
     <stability>
         <release>alpha</release>
@@ -51,6 +51,9 @@
                         <file baseinstalldir="/" name="SaunterRemoteControl.php" role="php">
                             <tasks:replace from="@package_version@" to="version" type="package-info" />
                         </file>
+                        <file baseinstalldir="/" name="SaunterWebDriver.php" role="php">
+                            <tasks:replace from="@package_version@" to="version" type="package-info" />
+                        </file>
                     </dir>
                     <dir name="Listeners">
                         <file baseinstalldir="/" name="StatusListener.php" role="php">
@@ -63,9 +66,17 @@
                                 <tasks:replace from="@package_version@" to="version" type="package-info" />
                             </file>
                         </dir>
+                        <dir name="WebDriver">
+                            <file baseinstalldir="/" name="Page.php" role="php">
+                                <tasks:replace from="@package_version@" to="version" type="package-info" />
+                            </file>
+                        </dir>
                     </dir>
                     <dir name="TestCase">
                         <file baseinstalldir="/" name="RemoteControl.php" role="php">
+                            <tasks:replace from="@package_version@" to="version" type="package-info" />
+                        </file>
+                        <file baseinstalldir="/" name="WebDriver.php" role="php">
                             <tasks:replace from="@package_version@" to="version" type="package-info" />
                         </file>
                     </dir>
