@@ -68,12 +68,12 @@ function copy_logfile(&$log_name) {
 }
 
 if (in_array("--new", $argv)) {
-    reinitialize($installed);
+    initialize($installed);
     exit;
 }
 
 if (in_array("--reset", $argv)) {
-    initialize($installed);
+    reinitialize($installed);
     exit;
 }
 
