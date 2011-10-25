@@ -21,6 +21,21 @@ class SaunterPHP_Framework_PO_WebDriver_Page {
    
     }
     
+    function wait_for_value_changed($where, $what) {
+        $element = self::$driver->find_element_by_locator($where);
+        foreach (range(0, $GLOBALS['timeouts']["seconds"]) as $value) {
+            try {
+                $text = $element->text();
+                if ((strlen(trim($text)) != 0) && trim($text) != $what) {
+                    return True;
+                }
+            } catch (PHPWebDriver_ObsoleteElementWebDriverError $e) {
+                $element = self::$driver->find_element_by_locator($where);
+            }
+            sleep(1);
+        }
+        return False;
+    }
 }
 
 ?>

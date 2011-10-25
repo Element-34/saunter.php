@@ -14,7 +14,7 @@
   );
   
   $GLOBALS['settings'] = array(
-    "sauce.ondemand" => True,
+    "sauce.ondemand" => False,
     "sauce.get_video" => False,
     "sauce.get_log" => False
   );

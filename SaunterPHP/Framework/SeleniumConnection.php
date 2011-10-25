@@ -36,7 +36,7 @@ class SaunterPHP_Framework_SeleniumConnection {
             }
             
             $driver = new SaunterPHP_Framework_Bindings_SaunterWebDriver($command_executor);
-            self::$instance = $driver->session();
+            self::$instance = $driver->session('firefox');
         }
         return self::$instance; 
     }
