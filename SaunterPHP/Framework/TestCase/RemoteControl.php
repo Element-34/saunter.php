@@ -69,6 +69,14 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_Te
             }
         }
     }
+
+    public function verifyElementPresent($element) {
+        try {
+            $this->assertTrue(self::$selenium->isElementPresent($element), $element . ' element is not present.');
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            array_push(self::$verificationErrors, $e->toString());
+        }
+    }
     
     public function verifyElementNotPresent($element) {
         try {
