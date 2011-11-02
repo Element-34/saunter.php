@@ -127,8 +127,7 @@
             </package>
             <package>
                 <name>PHPWebdriver</name>
-                <channel>element-34.github.com/pear</channel>
-                <recommended>0.9.2</recommended>
+                <uri>http://element-34.github.com/pear/get/PHPWebDriver-0.9.2</uri>
             </package>
         </required>
     </dependencies>
