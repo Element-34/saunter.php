@@ -14,7 +14,7 @@ function initialize($installed) {
     if (! is_dir("conf")) {
         mkdir("conf");
     }
-    copy($defaults . "/conf/settings.inc.default", "conf/settings.inc.default");
+    copy($defaults . "/conf/saunter.inc.default", "conf/settings.inc.default");
     copy($defaults . "/conf/saucelabs.inc.default", "conf/saucelabs.inc.default");
 
     copy($defaults . "/phpunit.xml", "phpunit.xml");
@@ -84,7 +84,7 @@ array_push($_SERVER['argv'], "scripts");
 
 register_shutdown_function('copy_logfile', &$log_name);
 
-require_once 'conf/settings.inc';
+require_once 'conf/saunter.inc';
 
 /****
  * the code in this block is covered under the Creative Commons Attribution 3.0 Unported License

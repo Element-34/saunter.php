@@ -35,7 +35,7 @@
                         <file baseinstalldir="/" name="saucelabs.inc.default" role="php">
                             <tasks:replace from="@package_version@" to="version" type="package-info" />
                         </file>
-                        <file baseinstalldir="/" name="settings.inc.default" role="php">
+                        <file baseinstalldir="/" name="saunter.inc.default" role="php">
                             <tasks:replace from="@package_version@" to="version" type="package-info" />
                         </file>
                     </dir>
