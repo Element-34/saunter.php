@@ -1,12 +1,13 @@
 <?php
 
-require_once 'SaunterPHP/Framework/PO/WebDriver/Page.php';
+include_once 'SaunterPHP/Framework/PO/WebDriver/Page.php';
 
 class ShirtPage extends SaunterPHP_Framework_PO_WebDriver_Page {
   private $locators = array(
       "collar style" => 'css=a[title="REPLACE"]',
       "results" => 'css=.count',
-      "throbber" => 'id=PreferenceThrob'
+      "throbber" => 'id=PreferenceThrob',
+      "create new profile" => "id=prefB"
   );
 
   function __construct() {
@@ -37,6 +38,12 @@ class ShirtPage extends SaunterPHP_Framework_PO_WebDriver_Page {
           return False;
       }
       return True;
+  }
+  
+  function create_fashion_profile() {
+      self::$driver->click($this->locators["create new profile"]);
+      $w = new PHPWebDriver_WebDriverWait(self::$driver);
+      $w->until(function($driver) {$driver->find_element_by_locator("id=overlayPanelProfileovolp-pad");});
   }
 }
 ?>
