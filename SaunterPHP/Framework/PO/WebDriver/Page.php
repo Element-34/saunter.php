@@ -5,6 +5,7 @@
  */
 
 require_once 'SaunterPHP/Framework/Exception.php';
+include_once 'PHPWebDriver/WebDriverWait.php';
 
 class SaunterPHP_Framework_PO_WebDriver_Page {
   

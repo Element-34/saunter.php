@@ -140,7 +140,7 @@ With the class marked as abstract, PHP won't try to create an instance of it whi
 Config Files
 ------------
 
-In the _conf_ directory there is a settings.inc.default file. Taking a page from the RoR playbook, this file should be copied and renamed to just settings.inc. The stacktrace you will get if you forget should remind you to do this. The reason settings.inc is not checked in is so you can have different configs across different locations (like individual jobs in the CI server) or same location (one per environment and managed via symlink).
+In the _conf_ directory there is a saunter.inc.default file. Taking a page from the RoR playbook, this file should be copied and renamed to just saunter.inc. The stacktrace you will get if you forget should remind you to do this. The reason saunter.inc is not checked in is so you can have different configs across different locations (like individual jobs in the CI server) or same location (one per environment and managed via symlink).
 
 All system/framework-wide configurations should go in this file. Rather than _completely_ pollute the global namespace I put everything into a settings array.
 
@@ -155,7 +155,7 @@ Running your scripts locally or in the OnDemand cloud is simply a matter of sett
 
     $GLOBALS['settings']['sauce.ondemand']
     
-to _true_ and adjusting for which OS and browser combination you desire. Unlike other PHPUnit integrations with Selenium, I don't suggest that you figure out how to iterate over browser strings for runner-base parallelization. Instead, create a job per OS/browser in your CI server and use its local settings.inc to configure things. This way when one of those jobs fail (and eventually one will) you don't need to change any code to troubleshoot it -- you just need to run that job.
+to _true_ and adjusting for which OS and browser combination you desire. Unlike other PHPUnit integrations with Selenium, I don't suggest that you figure out how to iterate over browser strings for runner-base parallelization. Instead, create a job per OS/browser in your CI server and use its local saunter.inc to configure things. This way when one of those jobs fail (and eventually one will) you don't need to change any code to troubleshoot it -- you just need to run that job.
 
 Notice as well that in the intermediary class, the teardown method will set the OnDemand job name and status as well.
 

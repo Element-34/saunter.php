@@ -15,5 +15,17 @@ class DressShirtTest extends EBayTestCase {
         $sp->change_collar_style("Banded (Collarless)");
         $this->assertTrue($sp->is_collar_selected("Banded (Collarless)"));
     }
+
+    /**
+    * @test
+    * @group shallow
+    * @group ebay
+    * @group adam
+    */
+    public function fashion_profile() {
+        $sp = new ShirtPage();
+        $sp->go_to_mens_dress_shirts();
+        $sp->create_fashion_profile();
+    }
 }
 ?>
