@@ -11,16 +11,25 @@ require_once 'Log.php';
 
 abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_TestCase {
     static public $log;
-    static public $driver;
     static public $verificationErrors;
 
     public function setUp() {
         self::$verificationErrors = array();
         self::$log = Log::singleton('file', $GLOBALS['settings']['logname'], $this->getName());
         
-        self::$driver = SaunterPHP_Framework_SeleniumConnection::WebDriver();
+        $command_executor = "http://" . $GLOBALS['settings']['seleniumserver'] . ":" . $GLOBALS['settings']['seleniumport'] . "/wd/hub";
+        if ($GLOBALS['settings']['sauce.ondemand']) {
+            $command_executor = "http://" . $GLOBALS['saucelabs']['username'] . ":" . $GLOBALS['saucelabs']['key'] . "@ondemand.saucelabs.com:80/wd/hub";
+        }
+        $this->driver = new SaunterPHP_Framework_Bindings_SaunterWebDriver($command_executor);
+
+        $browser = $GLOBALS['settings']['browser'];
+        if (substr($browser, 0, 1) === "*") {
+            $browser = substr($browser, 1);
+        }
+        $this->session = $this->driver->session($browser);
         
-        $this->sessionId = substr(self::$driver->getURL(), strrpos(self::$driver->getURL(), "/") + 1);
+        $this->sessionId = substr($this->driver->getURL(), strrpos($this->driver->getURL(), "/") + 1);
     }
 
     // fired after the test run but before teardown

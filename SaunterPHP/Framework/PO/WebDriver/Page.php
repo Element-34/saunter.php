@@ -10,12 +10,12 @@ include_once 'PHPWebDriver/WebDriverWait.php';
 class SaunterPHP_Framework_PO_WebDriver_Page {
   
     public static $string_timeout;
-    public static $driver;
+    public static $session;
 
     // constructor
-    function __construct() {
+    function __construct($session) {
         self::$string_timeout = $GLOBALS['timeouts']["str_ms"];
-        self::$driver = SaunterPHP_Framework_SeleniumConnection::WebDriver();
+        self::$session = $session;
     }  
 
     function __destruct() {
@@ -23,7 +23,7 @@ class SaunterPHP_Framework_PO_WebDriver_Page {
     }
     
     function wait_for_value_changed($where, $what) {
-        $element = self::$driver->find_element_by_locator($where);
+        $element = self::$session->find_element_by_locator($where);
         foreach (range(0, $GLOBALS['timeouts']["seconds"]) as $value) {
             try {
                 $text = $element->text();
@@ -31,7 +31,7 @@ class SaunterPHP_Framework_PO_WebDriver_Page {
                     return True;
                 }
             } catch (PHPWebDriver_ObsoleteElementWebDriverError $e) {
-                $element = self::$driver->find_element_by_locator($where);
+                $element = self::$session->find_element_by_locator($where);
             }
             sleep(1);
         }
