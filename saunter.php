@@ -91,9 +91,6 @@ require_once 'conf/saunter.inc';
  * from phpunit that can be read at http://www.phpunit.de/manual/current/en/appendixes.copyright.html
  */
 
-require_once 'PHP/CodeCoverage/Filter.php';
-PHP_CodeCoverage_Filter::getInstance()->addFileToBlacklist(__FILE__, 'PHPUNIT');
-
 if (strpos('/opt/local/bin/php', '@php_bin') === 0) {
     set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 }
