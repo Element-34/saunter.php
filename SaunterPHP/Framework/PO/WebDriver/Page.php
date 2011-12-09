@@ -35,7 +35,11 @@ class SaunterPHP_Framework_PO_WebDriver_Page {
             }
             sleep(1);
         }
-        return False;
+        throw new SaunterPHP_Framework_TimeoutError(
+          sprintf(
+            'Element with locator "%s" timed out waiting for it not to be "%s"',
+            $where,
+            $what));
     }
 }
 
