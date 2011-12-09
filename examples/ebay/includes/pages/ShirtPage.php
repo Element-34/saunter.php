@@ -5,7 +5,7 @@ include_once 'SaunterPHP/Framework/PO/WebDriver/Page.php';
 class ShirtPage extends SaunterPHP_Framework_PO_WebDriver_Page {
   private $locators = array(
       "collar style" => 'css=a[title="REPLACE"]',
-      "results" => 'css=.count',
+      "results" => 'id=v4-p311',
       "throbber" => 'id=PreferenceThrob',
       "create new profile" => "id=prefB"
   );
