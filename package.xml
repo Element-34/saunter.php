@@ -125,10 +125,10 @@
                 <channel>pear.php.net</channel>
                 <recommended>0.4.3</recommended>
             </package>
-            <!-- <package>
+            <package>
                 <name>PHPWebDriver</name>
-                <uri>http://element-34.github.com/pear/get/PHPWebDriver-0.9.2</uri>
-            </package> -->
+                <uri>http://element-34.github.com/pear/get/PHPWebDriver-0.9.4</uri>
+            </package>
         </required>
     </dependencies>
     <phprelease>
