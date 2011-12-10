@@ -3,6 +3,7 @@
  * @package SaunterPHP
  * @subpackage Framework_PO_WebDriver
  */
+namespace WebDriver;
 
 require_once 'SaunterPHP/Framework/Exception.php';
 include_once 'PHPWebDriver/WebDriverWait.php';
@@ -30,12 +31,12 @@ class SaunterPHP_Framework_PO_WebDriver_Page {
                 if ((strlen(trim($text)) != 0) && trim($text) != $what) {
                     return True;
                 }
-            } catch (PHPWebDriver_ObsoleteElementWebDriverError $e) {
+            } catch (\PHPWebDriver_ObsoleteElementWebDriverError $e) {
                 $element = self::$session->find_element_by_locator($where);
             }
             sleep(1);
         }
-        throw new SaunterPHP_Framework_TimeoutError(
+        throw new \SaunterPHP_Framework_TimeoutError(
           sprintf(
             'Element with locator "%s" timed out waiting for it not to be "%s"',
             $where,

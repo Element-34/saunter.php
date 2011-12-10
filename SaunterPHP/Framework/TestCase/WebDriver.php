@@ -3,25 +3,26 @@
  * @package SaunterPHP
  * @subpackage Framework_TestCase
  */
+namespace WebDriver;
  
 require_once 'SaunterPHP/Framework/SeleniumConnection.php';
 require_once 'SaunterPHP/Framework/SuiteIdentifier.php';
 require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Log.php';
 
-abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_TestCase {
+abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_TestCase {
     static public $log;
     static public $verificationErrors;
 
     public function setUp() {
         self::$verificationErrors = array();
-        self::$log = Log::singleton('file', $GLOBALS['settings']['logname'], $this->getName());
+        self::$log = \Log::singleton('file', $GLOBALS['settings']['logname'], $this->getName());
         
         $command_executor = "http://" . $GLOBALS['settings']['seleniumserver'] . ":" . $GLOBALS['settings']['seleniumport'] . "/wd/hub";
         if ($GLOBALS['settings']['sauce.ondemand']) {
             $command_executor = "http://" . $GLOBALS['saucelabs']['username'] . ":" . $GLOBALS['saucelabs']['key'] . "@ondemand.saucelabs.com:80/wd/hub";
         }
-        $this->driver = new SaunterPHP_Framework_Bindings_SaunterWebDriver($command_executor);
+        $this->driver = new \SaunterPHP_Framework_Bindings_SaunterWebDriver($command_executor);
 
         $browser = $GLOBALS['settings']['browser'];
         if (substr($browser, 0, 1) === "*") {
@@ -86,23 +87,27 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_Te
     //     }
     // }
     // 
-    // public function verifyEquals($want, $got) {
-    //     try {
-    //         $this->assertEquals($want, $got);
-    //     } catch (PHPUnit_Framework_AssertionFailedError $e) {
-    //         array_push(self::$verificationErrors, $e->toString());
-    //     }
-    // }
-    // 
+    public function verifyEquals($want, $got, $message = "") {
+        try {
+            $this->assertEquals($want, $got);
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+          if ($message) {
+              array_push(self::$verificationErrors, $message);
+          } else {
+              array_push(self::$verificationErrors, $e->toString());
+          }
+        }
+    }
+    
     // public function verifyFalse($condition, $message = "") {
     //     try {
     //         $this->assertFalse($condition);
     //     } catch (PHPUnit_Framework_AssertionFailedError $e) {
-    //         if ($message) {
-    //             array_push(self::$verificationErrors, $message);
-    //         } else {
-    //             array_push(self::$verificationErrors, $e->toString());
-    //         }
+            // if ($message) {
+            //     array_push(self::$verificationErrors, $message);
+            // } else {
+            //     array_push(self::$verificationErrors, $e->toString());
+            // }
     //     }
     // }
     // 
@@ -163,17 +168,16 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends PHPUnit_Framework_Te
     //     }
     // }
     // 
-    // public function verifyTrue($condition, $message = "") {
-    //     try {
-    //         $this->assertTrue($condition);
-    //     } catch (PHPUnit_Framework_AssertionFailedError $e) {
-    //         if ($message) {
-    //             array_push(self::$verificationErrors, $message);
-    //         } else {
-    //             array_push(self::$verificationErrors, $e->toString());
-    //         }
-    //     }
-    // }
-    // 
+    public function verifyTrue($condition, $message = "") {
+        try {
+            $this->assertTrue($condition);
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            if ($message) {
+                array_push(self::$verificationErrors, $message);
+            } else {
+                array_push(self::$verificationErrors, $e->toString());
+            }
+        }
+    }
 }
 ?>
