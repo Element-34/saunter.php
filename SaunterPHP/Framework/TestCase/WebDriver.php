@@ -99,18 +99,6 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
         }
     }
     
-    // public function verifyFalse($condition, $message = "") {
-    //     try {
-    //         $this->assertFalse($condition);
-    //     } catch (PHPUnit_Framework_AssertionFailedError $e) {
-            // if ($message) {
-            //     array_push(self::$verificationErrors, $message);
-            // } else {
-            //     array_push(self::$verificationErrors, $e->toString());
-            // }
-    //     }
-    // }
-    // 
     // public function verifyLocation($relativeURL) {
     //     try {
     //         $this->assertEquals($GLOBALS['settings']['webserver'] . $relativeURL, self::$selenium->getLocation(),  "URLs don't match with, " . $relativeURL);
@@ -179,5 +167,18 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
             }
         }
     }
+
+    public function verifyFalse($condition, $message = "") {
+        try {
+            $this->assertFalse($condition);
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            if ($message) {
+                array_push(self::$verificationErrors, $message);
+            } else {
+                array_push(self::$verificationErrors, $e->toString());
+            }
+        }
+    }
+
 }
 ?>
