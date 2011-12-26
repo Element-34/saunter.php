@@ -92,10 +92,10 @@ require_once 'conf/saunter.inc';
  */
 
 if (strpos('/opt/local/bin/php', '@php_bin') === 0) {
-    set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
+  require dirname(__FILE__) . DIRECTORY_SEPARATOR . 'PHPUnit' . DIRECTORY_SEPARATOR . 'Autoload.php';
+} else {
+  require '/opt/local/lib/php/pear/pear/php' . DIRECTORY_SEPARATOR . 'PHPUnit' . DIRECTORY_SEPARATOR . 'Autoload.php';
 }
-
-require_once 'PHPUnit/Autoload.php';
 
 define('PHPUnit_MAIN_METHOD', 'PHPUnit_TextUI_Command::main');
 
