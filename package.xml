@@ -18,8 +18,8 @@
     </lead>
     <date>2011-09-15</date>
     <version>
-        <release>0.1.15</release>
-        <api>0.1.15</api>
+        <release>0.1.16</release>
+        <api>0.1.16</api>
     </version>
     <stability>
         <release>alpha</release>
@@ -127,7 +127,7 @@
             </package>
             <package>
                 <name>PHPWebDriver</name>
-                <uri>http://element-34.github.com/pear/get/PHPWebDriver-0.9.4</uri>
+                <uri>http://element-34.github.com/pear/get/PHPWebDriver-0.9.6</uri>
             </package>
         </required>
     </dependencies>
