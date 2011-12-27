@@ -18,17 +18,44 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
         self::$verificationErrors = array();
         self::$log = \Log::singleton('file', $GLOBALS['settings']['logname'], $this->getName());
         
-        $command_executor = "http://" . $GLOBALS['settings']['seleniumserver'] . ":" . $GLOBALS['settings']['seleniumport'] . "/wd/hub";
         if ($GLOBALS['settings']['sauce.ondemand']) {
             $command_executor = "http://" . $GLOBALS['saucelabs']['username'] . ":" . $GLOBALS['saucelabs']['key'] . "@ondemand.saucelabs.com:80/wd/hub";
+        } else {
+            $command_executor = "http://" . $GLOBALS['settings']['seleniumserver'] . ":" . $GLOBALS['settings']['seleniumport'] . "/wd/hub";          
         }
         $this->driver = new \SaunterPHP_Framework_Bindings_SaunterWebDriver($command_executor);
 
-        $browser = $GLOBALS['settings']['browser'];
-        if (substr($browser, 0, 1) === "*") {
-            $browser = substr($browser, 1);
+        // this is inefficient, but...
+        $decoded = json_decode($GLOBALS['settings']['browser'], true);
+
+        // since the config can be shared between, take out the rc *
+        if (substr($decoded["browser"], 0, 1) === "*") {
+            $browser = substr($decoded["browser"], 1);
+        } else {
+            $browser = $decoded["browser"];
         }
-        $this->session = $this->driver->session($browser);
+
+        if ($GLOBALS['settings']['sauce.ondemand']) {
+            $additional_capabilities = array();
+            switch ($decoded["os"]) {
+                case 'Windows 2003':
+                    $additional_capabilities["platform"] = "XP";
+                    break;
+                case 'Windows 2008':
+                    $additional_capabilities["platform"] = "VISTA";
+                    break;
+                default:
+                    $additional_capabilities["platform"] = "LINUX";
+            }
+            if (substr($decoded["browser-version"], -1, 1) === ".") {
+                $additional_capabilities["version"] = substr($decoded["browser-version"], 0, -1);
+            } else {
+                $additional_capabilities["version"] = $decoded["browser-version"];
+            }
+        } else {
+            $additional_capabilities = array();          
+        }
+        $this->session = $this->driver->session($browser, $additional_capabilities);
         
         $this->sessionId = substr($this->driver->getURL(), strrpos($this->driver->getURL(), "/") + 1);
     }
