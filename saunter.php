@@ -91,10 +91,10 @@ require_once 'conf/saunter.inc';
  * from phpunit that can be read at http://www.phpunit.de/manual/current/en/appendixes.copyright.html
  */
 
-if (strpos('/opt/local/bin/php', '@php_bin') === 0) {
-  require dirname(__FILE__) . DIRECTORY_SEPARATOR . 'PHPUnit' . DIRECTORY_SEPARATOR . 'Autoload.php';
+if (strpos('@php_bin@', '@php_bin') === 0) {
+   require dirname(__FILE__) . DIRECTORY_SEPARATOR . 'PHPUnit' . DIRECTORY_SEPARATOR . 'Autoload.php';
 } else {
-  require '/opt/local/lib/php/pear/pear/php' . DIRECTORY_SEPARATOR . 'PHPUnit' . DIRECTORY_SEPARATOR . 'Autoload.php';
+   require '@php_dir@' . DIRECTORY_SEPARATOR . 'PHPUnit' . DIRECTORY_SEPARATOR . 'Autoload.php';
 }
 
 define('PHPUnit_MAIN_METHOD', 'PHPUnit_TextUI_Command::main');
