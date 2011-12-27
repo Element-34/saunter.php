@@ -42,6 +42,42 @@ class SaunterPHP_Framework_PO_WebDriver_Page {
             $where,
             $what));
     }
+    
+    function wait_for_element_available($locator, $timeout = null) {
+        if (! $timeout) {
+          $timeout = $GLOBALS['timeouts']['seconds'];
+        }
+        
+        $w = new \PHPWebDriver_WebDriverWait(self::$session, $timeout);
+        $before = time();
+        $w->until(
+          create_function('$session', 
+            sprintf(
+              '$got = $session->find_elements_by_locator("%s");
+                if (count($got) > 0) {
+                  return $got;
+                } else {
+                  return false;
+                }'
+            , addslashes($locator))
+          )
+        );
+        $remaining = ($before + $timeout) - time();
+        if ($remaining > 0) {
+          $w->until(
+            create_function('$session', 
+              sprintf(
+                '$got = $session->find_element_by_locator("%s");
+                if ($got->displayed()) {
+                  return $got; 
+                } else {
+                  return false;
+                }'
+              , addslashes($locator))
+            )
+          );
+        }
+    }
 }
 
 ?>
