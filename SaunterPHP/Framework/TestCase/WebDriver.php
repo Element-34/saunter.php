@@ -24,6 +24,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
             $command_executor = "http://" . $GLOBALS['settings']['seleniumserver'] . ":" . $GLOBALS['settings']['seleniumport'] . "/wd/hub";          
         }
         $this->driver = new \SaunterPHP_Framework_Bindings_SaunterWebDriver($command_executor);
+        // var_dump($this->driver);
 
         // this is inefficient, but...
         $decoded = json_decode($GLOBALS['settings']['browser'], true);
@@ -56,8 +57,10 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
             $additional_capabilities = array();          
         }
         $this->session = $this->driver->session($browser, $additional_capabilities);
-        
-        $this->sessionId = substr($this->driver->getURL(), strrpos($this->driver->getURL(), "/") + 1);
+        // var_dump($this->session);
+                
+        $this->sessionId = substr($this->session->getURL(), strrpos($this->session->getURL(), "/") + 1);
+        // var_dump($this->sessionId);
     }
 
     // fired after the test run but before teardown
