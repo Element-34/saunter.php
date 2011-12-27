@@ -22,6 +22,10 @@ class SaunterPHP_Framework_PO_WebDriver_Page {
     function __destruct() {
    
     }
+
+    function get_css_attribute_from_element($element, $attribute) {
+        return $element->css($attribute);
+    }
     
     function wait_for_value_changed($where, $what) {
         $element = self::$session->find_element_by_locator($where);
