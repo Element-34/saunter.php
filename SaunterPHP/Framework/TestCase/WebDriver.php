@@ -28,13 +28,16 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
 
         // this is inefficient, but...
         $decoded = json_decode($GLOBALS['settings']['browser'], true);
+        if ($decoded) {
+            $browser = $decoded["browser"];
+        } else {
+            $browser = $GLOBALS['settings']['browser'];
+        }
 
         // since the config can be shared between, take out the rc *
-        if (substr($decoded["browser"], 0, 1) === "*") {
-            $browser = substr($decoded["browser"], 1);
-        } else {
-            $browser = $decoded["browser"];
-        }
+        if (substr($browser, 0, 1) === "*") {
+            $browser = substr($browser, 1);
+        } 
 
         if ($GLOBALS['settings']['sauce.ondemand']) {
             $additional_capabilities = array();
@@ -54,8 +57,9 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
                 $additional_capabilities["version"] = $decoded["browser-version"];
             }
         } else {
-            $additional_capabilities = array();          
+            $additional_capabilities = array();     
         }
+
         $this->session = $this->driver->session($browser, $additional_capabilities);
         // var_dump($this->session);
                 
