@@ -23,6 +23,36 @@ class SaunterPHP_Framework_PO_WebDriver_Page {
    
     }
 
+    function get_all_meta_tags($custom = array()) {
+      $html401 = array("lang", "dir", "http-equiv", "name", "content", "scheme");
+      $html5 = array("charset");
+      $attributes = array_merge($html401, $html5, $custom);
+
+      $bin = array();
+
+      $metas = self::$session->find_elements_by_locator("tag=meta");
+      foreach ($metas as $meta) {
+        $bucket = array();
+        foreach ($attributes as $attribute) {
+          $fetched = $meta->attribute($attribute);
+          if ($fetched) {
+            $bucket[$attribute] = $fetched;
+          }
+        }
+        $bin[] = $bucket;
+      }
+      return $bin;
+    }
+
+    function get_named_meta_tag($named, $custom = array()) {
+      $metas = $this->get_all_meta_tags($custom);
+      foreach ($metas as $meta) {
+        if (array_key_exists("name", $meta) && $meta["name"] == $named) {
+          return $meta;        
+        }
+      }
+    }
+
     function get_css_attribute_from_element($element, $attribute) {
         return $element->css($attribute);
     }
