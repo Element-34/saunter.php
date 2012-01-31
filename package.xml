@@ -128,7 +128,7 @@
             </package>
             <package>
                 <name>PHPWebDriver</name>
-                <uri>http://element-34.github.com/pear/get/PHPWebDriver-0.9.7</uri>
+                <uri>http://element-34.github.com/pear/get/PHPWebDriver-0.9.9</uri>
             </package>
         </required>
     </dependencies>
