@@ -9,6 +9,7 @@ require_once 'SaunterPHP/Framework/SeleniumConnection.php';
 require_once 'SaunterPHP/Framework/SuiteIdentifier.php';
 require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Log.php';
+require_once 'PHPWebDriver/WebDriverProxy.php';
 
 abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_TestCase {
     static public $log;
@@ -57,7 +58,12 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
                 $additional_capabilities["version"] = $decoded["browser-version"];
             }
         } else {
-            $additional_capabilities = array();     
+            $additional_capabilities = array();
+            if ($GLOBALS['settings']['proxy']) {
+              $proxy = new \PHPWebDriver_WebDriverProxy();
+              $proxy->httpProxy = $GLOBALS['settings']['proxy'];
+              $proxy->add_to_capabilities($additional_capabilities);
+            }
         }
 
         $this->session = $this->driver->session($browser, $additional_capabilities);
