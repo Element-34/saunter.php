@@ -59,7 +59,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
             }
         } else {
             $additional_capabilities = array();
-            if ($GLOBALS['settings']['proxy']) {
+            if (array_key_exists('proxy', $GLOBALS['settings'])) {
               $proxy = new \PHPWebDriver_WebDriverProxy();
               $proxy->httpProxy = $GLOBALS['settings']['proxy'];
               $proxy->add_to_capabilities($additional_capabilities);
