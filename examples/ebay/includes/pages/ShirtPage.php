@@ -1,4 +1,5 @@
 <?php
+namespace WebDriver;
 
 include_once 'SaunterPHP/Framework/PO/WebDriver/Page.php';
 
@@ -28,9 +29,7 @@ class ShirtPage extends SaunterPHP_Framework_PO_WebDriver_Page {
   }
   
   function change_collar_style($style) {
-      $before = $this->results;
       self::$session->click(str_replace("REPLACE", $style, $this->locators["collar style"]));
-      $this->wait_for_value_changed($this->locators["results"], $before);
   }
   
   function is_collar_selected($collar) {
@@ -42,7 +41,7 @@ class ShirtPage extends SaunterPHP_Framework_PO_WebDriver_Page {
   
   function create_fashion_profile() {
       self::$session->click($this->locators["create new profile"]);
-      $w = new PHPWebDriver_WebDriverWait(self::$session);
+      $w = new \PHPWebDriver_WebDriverWait(self::$session, 5);
       $w->until(function($driver) {$driver->find_element_by_locator("id=overlayPanelProfileovolp-pad");});
   }
 }

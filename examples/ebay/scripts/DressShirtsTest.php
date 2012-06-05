@@ -1,4 +1,5 @@
 <?php
+namespace WebDriver;
 
 require_once 'tailored/EBayTestCase.php';
 require_once 'pages/ShirtPage.php';

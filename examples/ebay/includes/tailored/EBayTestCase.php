@@ -1,4 +1,5 @@
 <?php
+namespace WebDriver;
 
 require_once 'SaunterPHP/Framework/TestCase/WebDriver.php';
 
