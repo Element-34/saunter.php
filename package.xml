@@ -16,10 +16,10 @@
         <email>adam@element34.ca</email>
         <active>yes</active>
     </lead>
-    <date>2012-02-15</date>
+    <date>2012-06-05</date>
     <version>
-        <release>0.1.22</release>
-        <api>0.1.22</api>
+        <release>0.1.23</release>
+        <api>0.1.23</api>
     </version>
     <stability>
         <release>alpha</release>
@@ -126,10 +126,10 @@
                 <channel>pear.php.net</channel>
                 <recommended>0.4.3</recommended>
             </package>
-            <package>
+            <!-- <package>
                 <name>PHPWebDriver</name>
-                <uri>http://element-34.github.com/pear/get/PHPWebDriver-0.9.10</uri>
-            </package>
+                <uri>http://element-34.github.com/pear/get/PHPWebDriver-0.9.11</uri>
+            </package> -->
         </required>
     </dependencies>
     <phprelease>
