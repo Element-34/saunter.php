@@ -14,7 +14,7 @@ function initialize($installed) {
     if (! is_dir("conf")) {
         mkdir("conf");
     }
-    copy($defaults . "/conf/saunter.inc.default", "conf/settings.inc.default");
+    copy($defaults . "/conf/saunter.inc.default", "conf/saunter.inc.default");
     copy($defaults . "/conf/saucelabs.inc.default", "conf/saucelabs.inc.default");
 
     copy($defaults . "/phpunit.xml", "phpunit.xml");
