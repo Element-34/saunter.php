@@ -1,5 +1,7 @@
 <?php
 
+namespace RemoteControl;
+
 require_once 'SaunterPHP/Framework/TestCase/RemoteControl.php';
 
 class SauceTestCase extends SaunterPHP_Framework_SaunterTestCase {

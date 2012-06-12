@@ -1,11 +1,12 @@
 <?php
+namespace RemoteControl;
 
 require_once 'SaunterPHP/Framework/PO/RemoteControl/Page.php';
 
 class LoginPage extends SaunterPHP_Framework_PO_RemoteControl_Page {
   private $locators = array(
-    "username" => "username",
-    "password" => "password",
+    "username" => "id=username",
+    "password" => "id=password",
     "submit_button" => "submit",
     "error_message" => "css=div.error p:nth(0)"
   );

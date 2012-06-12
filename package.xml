@@ -16,14 +16,14 @@
         <email>adam@element34.ca</email>
         <active>yes</active>
     </lead>
-    <date>2012-06-05</date>
+    <date>2012-06-12</date>
     <version>
-        <release>0.1.23</release>
-        <api>0.1.23</api>
+        <release>1.0.1</release>
+        <api>1.0.1</api>
     </version>
     <stability>
-        <release>alpha</release>
-        <api>alpha</api>
+        <release>stable</release>
+        <api>stable</api>
     </stability>
     <license>Apache 2</license>
     <notes>Some notes go here</notes>
@@ -80,6 +80,11 @@
                             <tasks:replace from="@package_version@" to="version" type="package-info" />
                         </file>
                     </dir>
+                    <dir name="Providers">
+                        <file baseinstalldir="/" name="CSV.php" role="php">
+                            <tasks:replace from="@package_version@" to="version" type="package-info" />
+                        </file>
+                    </dir>
                     <file baseinstalldir="/" name="Generators.php" role="php">
                         <tasks:replace from="@package_version@" to="version" type="package-info" />
                     </file>
@@ -126,10 +131,18 @@
                 <channel>pear.php.net</channel>
                 <recommended>0.4.3</recommended>
             </package>
-            <!-- <package>
+            <package>
                 <name>PHPWebDriver</name>
                 <uri>http://element-34.github.com/pear/get/PHPWebDriver-0.9.11</uri>
-            </package> -->
+            </package>
+            <package>
+                <name>PHPBrowserMobProxy</name>
+                <uri>http://element-34.github.com/pear/get/PHPBrowserMobProxy-1.0.0</uri>
+            </package>
+            <package>
+                <name>Requests</name>
+                <uri>http://element-34.github.com/pear/get/Requests-1.7.0</uri>
+            </package>
         </required>
     </dependencies>
     <phprelease>

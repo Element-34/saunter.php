@@ -43,6 +43,14 @@ function initialize($installed) {
     if (! is_dir("logs")) {
         mkdir("logs");
     }
+
+    if (! is_dir("support")) {
+        mkdir("support");
+    }
+
+    if (! is_dir("support/csv")) {
+        mkdir("support/csv");
+    }
 }
 
 function reinitialize($installed) {
@@ -85,6 +93,8 @@ array_push($_SERVER['argv'], "scripts");
 register_shutdown_function('copy_logfile', &$log_name);
 
 require_once 'conf/saunter.inc';
+
+$GLOBALS['settings']['saunter.base'] = getcwd();
 
 /****
  * the code in this block is covered under the Creative Commons Attribution 3.0 Unported License
