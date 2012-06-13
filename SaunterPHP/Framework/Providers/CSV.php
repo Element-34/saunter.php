@@ -28,7 +28,7 @@ class SaunterPHP_Framework_Providers_CSV {
   }
 
   // from http://www.php.net/manual/en/function.shuffle.php#99624
-  private function shuffle_assoc($list) { 
+  protected function shuffle_assoc($list) { 
     if (!is_array($list)) return $list; 
 
     $keys = array_keys($list); 
