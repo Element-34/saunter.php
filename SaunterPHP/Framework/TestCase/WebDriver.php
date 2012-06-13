@@ -10,6 +10,7 @@ require_once 'SaunterPHP/Framework/SuiteIdentifier.php';
 require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Log.php';
 require_once 'PHPWebDriver/WebDriverProxy.php';
+require_once 'PHPBrowserMobProxy/Client.php';
 
 abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_TestCase {
     static public $log;
@@ -40,8 +41,8 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
             $browser = substr($browser, 1);
         } 
 
+        $additional_capabilities = array();
         if ($GLOBALS['settings']['sauce.ondemand']) {
-            $additional_capabilities = array();
             switch ($decoded["os"]) {
                 case 'Windows 2003':
                     $additional_capabilities["platform"] = "XP";
@@ -58,10 +59,15 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
                 $additional_capabilities["version"] = $decoded["browser-version"];
             }
         } else {
-            $additional_capabilities = array();
-            if (array_key_exists('proxy', $GLOBALS['settings'])) {
+
+            if (array_key_exists('proxy', $GLOBALS['settings']) && $GLOBALS['settings']['proxy']) {
               $proxy = new \PHPWebDriver_WebDriverProxy();
-              $proxy->httpProxy = $GLOBALS['settings']['proxy'];
+              if (array_key_exists('proxy', $GLOBALS['settings']) && $GLOBALS['settings']['proxy.browsermob']) {
+                  $this->client = new \PHPBrowserMobProxy_Client($GLOBALS['settings']['proxy']);
+                  $proxy->httpProxy = $this->client->url;
+              } else {
+                $proxy->httpProxy = $GLOBALS['settings']['proxy'];
+              }
               $proxy->add_to_capabilities($additional_capabilities);
             }
         }

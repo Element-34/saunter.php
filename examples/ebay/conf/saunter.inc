@@ -18,6 +18,9 @@
     "sauce.get_video" => False,
     "sauce.get_log" => False
   );
+  
+  // $GLOBALS['settings']['proxy'] = "localhost:9090";  
+  // $GLOBALS['settings']['proxy.browsermob'] = true;
 
   $GLOBALS['settings']['webserver'] = $sites["production"];
   
