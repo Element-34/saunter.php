@@ -59,7 +59,6 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
                 $additional_capabilities["version"] = $decoded["browser-version"];
             }
         } else {
-
             if (array_key_exists('proxy', $GLOBALS['settings']) && $GLOBALS['settings']['proxy']) {
               $proxy = new \PHPWebDriver_WebDriverProxy();
               if (array_key_exists('proxy', $GLOBALS['settings']) && $GLOBALS['settings']['proxy.browsermob']) {
