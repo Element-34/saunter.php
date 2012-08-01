@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<phpunit>
+  <php>
+    <includePath>./includes:./conf</includePath>
+  </php>
+  <listeners>
+    <listener class="SaunterPHP_Framework_Listeners_StatusListener" file="/opt/local/lib/php/pear/pear/php/SaunterPHP/Framework/Listeners/StatusListener.php"/>
+  </listeners>
+</phpunit>

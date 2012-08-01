@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="scripts" tests="1" assertions="0" failures="0" errors="1" time="18.005160">
+    <testsuite name="WebDriver\FrameTest" file="/Users/adam/work/saunter/saunter.php/examples/ckeditor/scripts/FrameTest.php" namespace="WebDriver" fullPackage="WebDriver" tests="1" assertions="0" failures="0" errors="1" time="18.005160">
+      <testcase name="number_of_paragraphs" class="WebDriver\FrameTest" file="/Users/adam/work/saunter/saunter.php/examples/ckeditor/scripts/FrameTest.php" line="22" assertions="0" time="18.005160">
+        <error type="PHPWebDriver_NoSuchElementWebDriverError">WebDriver\FrameTest::number_of_paragraphs
+PHPWebDriver_NoSuchElementWebDriverError: Element not found with css selector, iframe
+
+Unable to locate element: {"method":"css selector","selector":"iframe"}
+Command duration or timeout: 49 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.25.0', revision: '17482', time: '2012-07-18 21:08:56'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.7.4', java.version: '1.6.0_33'
+Driver info: driver.version: EventFiringWebDriver
+Session ID: 68bc55dd-f372-0c46-ae72-342382a1d27a
+
+/opt/local/lib/php/pear/pear/php/PHPWebDriver/WebDriverContainer.php:29
+/opt/local/lib/php/pear/pear/php/SaunterPHP/Framework/Bindings/SaunterWebDriver.php:49
+/Users/adam/work/saunter/saunter.php/examples/ckeditor/includes/pages/Editor.php:26
+/Users/adam/work/saunter/saunter.php/examples/ckeditor/scripts/FrameTest.php:24
+/opt/local/lib/php/pear/pear/saunter.php:112
+</error>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>
