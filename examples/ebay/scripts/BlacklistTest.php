@@ -18,12 +18,14 @@ class BlacklistTest extends EBayTestCase {
         $sp = new ShirtPage($this->session);
         $this->client->new_har("shirts");
         $sp->go_to_mens_dress_shirts();
+        sleep(5);
         $har = $this->client->har;
         
-        var_dump($har);
+        // var_dump(json_encode($har));
 
-        $h = new \PHPHARchive_HAR($har);
-        $entries = $h->get_entries_by_page_ref("page_1_0");
+        // $h = new \PHPHARchive_HAR($har);
+        $h = new \PHPHARchive_HAR(dirname(__FILE__) . '/./shirts.json');
+        $entries = $h->get_entries_by_page_ref("shirts");
         $three_oh_sixes = array();
         foreach ($entries as $entry) {
           if ($entry->response->status == 306) {
