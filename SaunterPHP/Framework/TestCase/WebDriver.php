@@ -45,10 +45,16 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
         if ($GLOBALS['settings']['sauce.ondemand']) {
             switch ($decoded["os"]) {
                 case 'Windows 2003':
+                case 'XP':
                     $additional_capabilities["platform"] = "XP";
                     break;
                 case 'Windows 2008':
+                case 'VISTA':
                     $additional_capabilities["platform"] = "VISTA";
+                    break;
+                case 'OSX':
+                case 'MAC':
+                    $additional_capabilities["platform"] = "MAC";
                     break;
                 default:
                     $additional_capabilities["platform"] = "LINUX";

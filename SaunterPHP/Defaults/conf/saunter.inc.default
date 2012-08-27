@@ -30,7 +30,7 @@
       $GLOBALS['settings']['browser'] = json_encode(array(
           "username" => $GLOBALS['saucelabs']['username'],
           "access-key" => $GLOBALS['saucelabs']['key'],
-          "os" => "Windows 2003", 
+          "os" => "LINUX", // LINUX, XP, VISTA, MAC
           "browser" => "firefox",
           "browser-version" => "3.6."
       ));
@@ -38,7 +38,7 @@
       $GLOBALS['settings']['seleniumport'] = 4444;
 
   } else {
-      $GLOBALS['settings']['browser'] = "*safari";
+      $GLOBALS['settings']['browser'] = "firefox";
       $GLOBALS['settings']['seleniumserver'] = "localhost";
       $GLOBALS['settings']['seleniumport'] = 4444;
   }
