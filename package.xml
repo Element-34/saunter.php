@@ -16,10 +16,10 @@
         <email>adam@element34.ca</email>
         <active>yes</active>
     </lead>
-    <date>2012-08-27</date>
+    <date>2013-01-18</date>
     <version>
-        <release>1.0.6</release>
-        <api>1.0.6</api>
+        <release>1.0.7</release>
+        <api>1.0.7</api>
     </version>
     <stability>
         <release>stable</release>
@@ -133,11 +133,11 @@
             </package>
             <package>
                 <name>PHPWebDriver</name>
-                <uri>http://element-34.github.com/pear/get/PHPWebDriver-1.1.0</uri>
+                <uri>http://element-34.github.com/pear/get/PHPWebDriver-1.5.0</uri>
             </package>
             <package>
                 <name>PHPBrowserMobProxy</name>
-                <uri>http://element-34.github.com/pear/get/PHPBrowserMobProxy-1.0.2</uri>
+                <uri>http://element-34.github.com/pear/get/PHPBrowserMobProxy-1.0.3</uri>
             </package>
             <package>
                 <name>Requests</name>
