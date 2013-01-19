@@ -70,8 +70,10 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
               if (array_key_exists('proxy', $GLOBALS['settings']) && $GLOBALS['settings']['proxy.browsermob']) {
                   $this->client = new \PHPBrowserMobProxy_Client($GLOBALS['settings']['proxy']);
                   $proxy->httpProxy = $this->client->url;
+                  $proxy->sslProxy = $this->client->url;
               } else {
                 $proxy->httpProxy = $GLOBALS['settings']['proxy'];
+                $proxy->sslProxy = $GLOBALS['settings']['proxy'];
               }
               $proxy->add_to_capabilities($additional_capabilities);
             }
