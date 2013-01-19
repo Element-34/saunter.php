@@ -71,7 +71,7 @@ function reinitialize($installed) {
     }
 }
 
-function copy_logfile(&$log_name) {
+function copy_logfile($log_name) {
     copy("logs/" . $log_name . ".xml", "logs/latest.xml");
 }
 
@@ -90,7 +90,7 @@ array_push($_SERVER['argv'], "--log-junit");
 array_push($_SERVER['argv'], "logs/" . $log_name . ".xml");
 array_push($_SERVER['argv'], "scripts");
 
-register_shutdown_function('copy_logfile', &$log_name);
+register_shutdown_function('copy_logfile', $log_name);
 
 require_once 'conf/saunter.inc';
 
