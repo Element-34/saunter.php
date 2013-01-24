@@ -13,7 +13,7 @@ class SaunterPHP_Framework_Bindings_SaunterWebDriver extends PHPWebDriver_WebDri
         parent::__construct($executor);
     }
     
-    public function session($browser, $additional_capabilities = array()) {
+    public function session($browser, $additional_capabilities = array(), $curl_opts = array()) {
         $desired_capabilities = array_merge(
           $additional_capabilities,
           array('browserName' => $browser));
@@ -31,11 +31,6 @@ class SaunterPHP_Framework_Bindings_SaunterWebDriver extends PHPWebDriver_WebDri
 class SaunterPHP_Framework_Bindings_SaunterWebDriverSession extends PHPWebDriver_WebDriverSession {
     public function __construct($url) {
         parent::__construct($url);
-    }
-    
-    public function click($locator_string) {
-        $element = $this->find_element_by_locator($locator_string);
-        $element->click();
     }
 
     public function find_element_by_locator($locator_string) {
