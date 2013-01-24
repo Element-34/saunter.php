@@ -133,7 +133,7 @@
             </package>
             <package>
                 <name>PHPWebDriver</name>
-                <uri>http://element-34.github.com/pear/get/PHPWebDriver-1.5.0</uri>
+                <uri>http://element-34.github.com/pear/get/PHPWebDriver-1.6.0</uri>
             </package>
             <package>
                 <name>PHPBrowserMobProxy</name>
