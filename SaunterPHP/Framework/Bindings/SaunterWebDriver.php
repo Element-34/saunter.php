@@ -13,7 +13,10 @@ class SaunterPHP_Framework_Bindings_SaunterWebDriver extends PHPWebDriver_WebDri
         parent::__construct($executor);
     }
     
-    public function session($browser, $additional_capabilities = array(), $curl_opts = array()) {
+    public function session($browser = 'unknown browser', $additional_capabilities = array(), $curl_opts = array()) {
+        if ($browser == 'unknown browser') {
+            throw new SaunterPHP_Framework_Exception("Pretty sure you can't even get here...");
+        }
         $desired_capabilities = array_merge(
           $additional_capabilities,
           array('browserName' => $browser));

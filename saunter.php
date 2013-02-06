@@ -101,7 +101,7 @@ function reinitialize($installed) {
 }
 
 function copy_logfile($log_name) {
-    copy("logs/" . $log_name . ".xml", "logs/latest.xml");
+    copy($log_name, "logs/latest.xml");
 }
 
 if (in_array("--new", $argv)) {
@@ -114,14 +114,15 @@ if (in_array("--reset", $argv)) {
     exit;
 }
 
-$log_name = date("y-m-d-H-m-s");
+require_once 'conf/saunter.inc';
+
 array_push($_SERVER['argv'], "--log-junit");
-array_push($_SERVER['argv'], "logs/" . $log_name . ".xml");
+
+$GLOBALS['settings']['logname'] = 'logs/' . date('Y-m-d-h-i-s') . '.xml';
+array_push($_SERVER['argv'], $GLOBALS['settings']['logname']);
 array_push($_SERVER['argv'], "scripts");
 
-register_shutdown_function('copy_logfile', $log_name);
-
-require_once 'conf/saunter.inc';
+register_shutdown_function('copy_logfile', $GLOBALS['settings']['logname']);
 
 $GLOBALS['settings']['saunter.base'] = getcwd();
 
