@@ -84,6 +84,9 @@
                         <file baseinstalldir="/" name="CSV.php" role="php">
                             <tasks:replace from="@package_version@" to="version" type="package-info" />
                         </file>
+                        <file baseinstalldir="/" name="SQLServer.php" role="php">
+                            <tasks:replace from="@package_version@" to="version" type="package-info" />
+                        </file>
                     </dir>
                     <file baseinstalldir="/" name="Generators.php" role="php">
                         <tasks:replace from="@package_version@" to="version" type="package-info" />
