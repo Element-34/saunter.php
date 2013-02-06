@@ -54,20 +54,49 @@ function initialize($installed) {
 }
 
 function reinitialize($installed) {
+    $has_changes = false;
+
     $status_listener = $installed . '/Framework/Listeners/StatusListener.php';
     $xml = simplexml_load_file('phpunit.xml');
 
+    // get the status listener
     foreach ($xml->listeners->listener as $listener) {
         if ($listener['class'] == 'SaunterPHP_Framework_Listeners_StatusListener') {
             if ($listener['file'] != $status_listener) {
-                $dom = new DOMDocument('1.0');
-                $dom->preserveWhiteSpace = false;
-                $dom->formatOutput = true;
                 $listener['file'] = $status_listener;
-                $dom->loadXML($xml->asXML());
-                $dom->save('phpunit.xml');
             }
         }
+    }
+
+    // includepath is platform specific
+    $os = strtolower(PHP_OS);
+    $current = $xml->php->includePath;
+    if (substr($os, 0, 3) == 'win') {
+        if (strpos($current, '/') !== false) {
+            $xml->php->includePath = str_replace('/', '\\', $xml->php->includePath);
+            $has_changes = true;
+        }
+        if (strpos($current, ':') !== false) {
+            $xml->php->includePath = str_replace(':', ';', $xml->php->includePath);
+            $has_changes = true;
+        }
+    } else {
+        if (strpos($current, '\\') !== false) {
+            $xml->php->includePath = str_replace('\\', '/', $xml->php->includePath);
+            $has_changes = true;
+        }
+        if (strpos($current, ';') !== false) {
+            $xml->php->includePath = str_replace(';', ':', $xml->php->includePath);
+            $has_changes = true;
+        }
+    }
+
+    if ($has_changes) {
+        $dom = new DOMDocument('1.0');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($xml->asXML());
+        $dom->save('phpunit.xml');
     }
 }
 
