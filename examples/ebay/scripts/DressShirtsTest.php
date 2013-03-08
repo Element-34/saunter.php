@@ -22,6 +22,9 @@ class DressShirtTest extends EBayTestCase {
     * @group shallow
     * @group ebay
     * @group adam
+    * @sauce-custom-data donkey
+    * @sauce-custom-data cow moo
+    * @sauce-custom-data ribbit rabbit super crazy
     */
     public function fashion_profile() {
         $sp = new ShirtPage($this->session);
