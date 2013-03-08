@@ -61,14 +61,30 @@ class SaunterPHP_Framework_Listeners_StatusListener implements PHPUnit_Framework
                 }
 
                 // global custom data
-                $custom_data = array();
+                $global_custom_data = array();
                 if (array_key_exists('saucelabs', $GLOBALS) && array_key_exists('custom-data', $GLOBALS['saucelabs'])) {
                     foreach ($GLOBALS['saucelabs']['custom-data'] as $key => $value) {
-                        $custom_data[$key] = $value;
+                        $global_custom_data[$key] = $value;
                     }
                 }
-                $context['custom-data'] = $custom_data;
 
+                // per script custom data
+                $per_script_custom_data = array();
+                preg_match_all("(@sauce-custom-data .*)", $reflector->getDocComment(), $raw_tags);
+                if (count($raw_tags[0]) > 0) {
+                    foreach ($raw_tags[0] as $raw_tag) {
+                        $split_tag = explode(" ", $raw_tag);
+                        // nuke the tag
+                        unset($split_tag[0]);
+                        $key = $split_tag[1];
+                        // nuke the key
+                        unset($split_tag[1]);
+                        $value = implode(" ", $split_tag);
+                        $per_script_custom_data[$key] = $value;
+                    }
+                }
+                $context['custom-data'] = array_merge($global_custom_data, $per_script_custom_data);
+                
                 $body = json_encode($context);
                 $fp = fopen('php://temp/maxmemory:256000', 'w');
                 if (!$fp) {
