@@ -64,6 +64,7 @@ function reinitialize($installed) {
         if ($listener['class'] == 'SaunterPHP_Framework_Listeners_StatusListener') {
             if ($listener['file'] != $status_listener) {
                 $listener['file'] = $status_listener;
+                $has_changes = true;
             }
         }
     }
