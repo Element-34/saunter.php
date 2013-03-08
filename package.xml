@@ -16,10 +16,10 @@
         <email>adam@element34.ca</email>
         <active>yes</active>
     </lead>
-    <date>2013-03-04</date>
+    <date>2013-03-08</date>
     <version>
-        <release>1.0.11</release>
-        <api>1.0.11</api>
+        <release>1.0.12</release>
+        <api>1.0.12</api>
     </version>
     <stability>
         <release>stable</release>
@@ -145,7 +145,7 @@
             </package>
             <package>
                 <name>PHPBrowserMobProxy</name>
-                <uri>http://element-34.github.com/pear/get/PHPBrowserMobProxy-1.0.3</uri>
+                <uri>http://element-34.github.com/pear/get/PHPBrowserMobProxy-1.0.4</uri>
             </package>
             <package>
                 <name>Requests</name>
