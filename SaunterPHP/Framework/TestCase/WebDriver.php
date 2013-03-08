@@ -233,5 +233,20 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
         }
     }
 
+    protected function parseAnnotations($docblock)
+    {
+        $annotations = array();
+
+        if (preg_match_all('/@(?P<name>[A-Za-z_-]+)(?:[ \t]+(?P<value>.*?))?[ \t]*\r?$/m', $docblock, $matches)) {
+            $numMatches = count($matches[0]);
+
+            for ($i = 0; $i < $numMatches; ++$i) {
+                $annotations[$matches['name'][$i]][] = $matches['value'][$i];
+            }
+        }
+        
+        return $annotations;
+    }
+
 }
 ?>
