@@ -55,7 +55,7 @@ class SaunterPHP_Framework_Listeners_StatusListener implements PHPUnit_Framework
                 if (count($raw_tags[0]) > 0) {
                     $context["tags"] = array();
                     foreach ($raw_tags[0] as $raw_tag) {
-                        $split_tag = split(" ", $raw_tag);
+                        $split_tag = explode(" ", $raw_tag);
                         array_push($context["tags"], $split_tag[1]);
                     }
                 }
