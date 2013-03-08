@@ -4,6 +4,6 @@
     <includePath>./includes:./conf</includePath>
   </php>
   <listeners>
-    <listener class="SaunterPHP_Framework_Listeners_StatusListener" file="/opt/local/lib/php/pear/pear/php/SaunterPHP/Framework/Listeners/StatusListener.php"/>
+    <listener class="SaunterPHP_Framework_Listeners_StatusListener" file="/usr/local/Cellar/php54/5.4.11/lib/php/SaunterPHP/Framework/Listeners/StatusListener.php"/>
   </listeners>
 </phpunit>
