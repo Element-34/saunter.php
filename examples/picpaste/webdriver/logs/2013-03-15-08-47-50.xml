@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="scripts" tests="1" assertions="0" failures="0" errors="1" time="12.461502">
+    <testsuite name="WebDriver\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php" namespace="WebDriver" fullPackage="WebDriver" tests="1" assertions="0" failures="0" errors="1" time="12.461502">
+      <testcase name="local_upload" class="WebDriver\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php" line="24" assertions="0" time="12.461502">
+        <error type="PHPUnit_Framework_Error_Notice">WebDriver\FileUploadTest::local_upload
+Undefined property: WebDriver\Upload::$driver
+
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/includes/pages/Upload.php:65
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php:25
+</error>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>

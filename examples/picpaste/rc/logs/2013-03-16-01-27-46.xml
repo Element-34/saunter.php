@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="scripts" tests="1" assertions="1" failures="0" errors="0" time="12.297479">
+    <testsuite name="RemoteControl\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/rc/scripts/FileUploadTest.php" namespace="RemoteControl" fullPackage="RemoteControl" tests="1" assertions="1" failures="0" errors="0" time="12.297479">
+      <testcase name="local_upload" class="RemoteControl\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/rc/scripts/FileUploadTest.php" line="23" assertions="1" time="12.297479"/>
+    </testsuite>
+  </testsuite>
+</testsuites>

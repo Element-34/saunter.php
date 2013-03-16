@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="scripts" tests="1" assertions="0" failures="0" errors="1" time="7.192368">
+    <testsuite name="WebDriver\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php" namespace="WebDriver" fullPackage="WebDriver" tests="1" assertions="0" failures="0" errors="1" time="7.192368">
+      <testcase name="local_upload" class="WebDriver\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php" line="24" assertions="0" time="7.192368">
+        <error type="Exception">WebDriver\FileUploadTest::local_upload
+Exception: send_keys is not a valid webdriver command.
+
+/usr/local/Cellar/php54/5.4.11/lib/php/PHPWebDriver/WebDriverBase.php:255
+/usr/local/Cellar/php54/5.4.11/lib/php/PHPWebDriver/WebDriverBase.php:224
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/includes/pages/Upload.php:25
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/includes/pages/Upload.php:25
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/includes/pages/Upload.php:57
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php:25
+</error>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>

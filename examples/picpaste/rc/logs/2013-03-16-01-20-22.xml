@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="scripts" tests="1" assertions="0" failures="0" errors="1" time="18.584732">
+    <testsuite name="RemoteControl\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/rc/scripts/FileUploadTest.php" namespace="RemoteControl" fullPackage="RemoteControl" tests="1" assertions="0" failures="0" errors="1" time="18.584732">
+      <testcase name="local_upload" class="RemoteControl\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/rc/scripts/FileUploadTest.php" line="23" assertions="0" time="18.584732">
+        <error type="SaunterPHP_Framework_Exception">RemoteControl\FileUploadTest::local_upload
+SaunterPHP_Framework_Exception: timeout for element css=input[name="upload"] present
+
+/usr/local/Cellar/php54/5.4.11/lib/php/SaunterPHP/Framework/PO/RemoteControl/Page.php:29
+/Users/adam/work/saunter/saunter.php/examples/picpaste/rc/includes/pages/Upload.php:40
+/Users/adam/work/saunter/saunter.php/examples/picpaste/rc/scripts/FileUploadTest.php:12
+</error>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="scripts" tests="1" assertions="0" failures="0" errors="1" time="9.046741">
+    <testsuite name="WebDriver\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php" namespace="WebDriver" fullPackage="WebDriver" tests="1" assertions="0" failures="0" errors="1" time="9.046741">
+      <testcase name="local_upload" class="WebDriver\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php" line="24" assertions="0" time="9.046741">
+        <error type="PHPUnit_Framework_Error_Notice">WebDriver\FileUploadTest::local_upload
+Accessing static property WebDriver\Preview::$session as non static
+
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/includes/pages/Preview.php:16
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/includes/pages/Upload.php:66
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php:25
+</error>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>

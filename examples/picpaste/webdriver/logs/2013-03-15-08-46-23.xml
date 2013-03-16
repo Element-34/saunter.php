@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="scripts" tests="1" assertions="0" failures="0" errors="1" time="9.319460">
+    <testsuite name="WebDriver\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php" namespace="WebDriver" fullPackage="WebDriver" tests="1" assertions="0" failures="0" errors="1" time="9.319460">
+      <testcase name="local_upload" class="WebDriver\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php" line="24" assertions="0" time="9.319460">
+        <error type="PHPWebDriver_NoSuchElementWebDriverError">WebDriver\FileUploadTest::local_upload
+PHPWebDriver_NoSuchElementWebDriverError: Cannot locate option with visible text: text=30 Minutes
+
+/usr/local/Cellar/php54/5.4.11/lib/php/PHPWebDriver/Support/WebDriverSelect.php:121
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/includes/pages/Upload.php:33
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/includes/pages/Upload.php:59
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php:25
+</error>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>

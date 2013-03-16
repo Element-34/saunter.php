@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="scripts" tests="1" assertions="0" failures="0" errors="1" time="8.855840">
+    <testsuite name="RemoteControl\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/rc/scripts/FileUploadTest.php" namespace="RemoteControl" fullPackage="RemoteControl" tests="1" assertions="0" failures="0" errors="1" time="8.855840">
+      <testcase name="local_upload" class="RemoteControl\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/rc/scripts/FileUploadTest.php" line="23" assertions="0" time="8.855840">
+        <error type="SaunterPHP_Framework_Exception">RemoteControl\FileUploadTest::local_upload
+SaunterPHP_Framework_Exception: Non OK response from Selenium Server: java.lang.RuntimeException: Malformed URL &lt;label=http://a.flyingmonkey.ca:7000/files/english_muffin.jpg&gt;, 
+
+/usr/local/Cellar/php54/5.4.11/lib/php/SaunterPHP/Framework/Bindings/SaunterRemoteControl.php:30
+/usr/local/Cellar/php54/5.4.11/lib/php/SaunterPHP/Framework/Bindings/SaunterRemoteControl.php:24
+/usr/local/Cellar/php54/5.4.11/lib/php/Testing/Selenium.php:2456
+/Users/adam/work/saunter/saunter.php/examples/picpaste/rc/includes/pages/Upload.php:23
+/Users/adam/work/saunter/saunter.php/examples/picpaste/rc/includes/pages/Upload.php:48
+/Users/adam/work/saunter/saunter.php/examples/picpaste/rc/scripts/FileUploadTest.php:24
+</error>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>

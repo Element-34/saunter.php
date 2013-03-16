@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="scripts" tests="1" assertions="0" failures="0" errors="1" time="7.493093">
+    <testsuite name="WebDriver\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php" namespace="WebDriver" fullPackage="WebDriver" tests="1" assertions="0" failures="0" errors="1" time="7.493093">
+      <testcase name="local_upload" class="WebDriver\FileUploadTest" file="/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php" line="24" assertions="0" time="7.493093">
+        <error type="PHPUnit_Framework_Error_Warning">WebDriver\FileUploadTest::local_upload
+call_user_func_array() expects parameter 2 to be array, string given
+
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/includes/pages/Upload.php:47
+/usr/local/Cellar/php54/5.4.11/lib/php/PHPWebDriver/WebDriverWait.php:31
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/includes/pages/Upload.php:49
+/Users/adam/work/saunter/saunter.php/examples/picpaste/webdriver/scripts/FileUploadTest.php:13
+</error>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>
