@@ -13,9 +13,10 @@ class SaunterPHP_Framework_PO_RemoteControl_Page {
     public static $selenium;
 
     // constructor
-    function __construct() {
+    function __construct($driver) {
         self::$string_timeout = $GLOBALS['timeouts']["str_ms"];
-        self::$selenium = \SaunterPHP_Framework_SeleniumConnection::RemoteControl();
+        self::$selenium = $driver;
+        $this->driver = $driver;
     }  
 
     function __destruct() {

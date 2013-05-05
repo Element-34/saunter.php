@@ -5,7 +5,6 @@
  */
 namespace WebDriver;
  
-require_once 'SaunterPHP/Framework/SeleniumConnection.php';
 require_once 'SaunterPHP/Framework/SuiteIdentifier.php';
 require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Log.php';

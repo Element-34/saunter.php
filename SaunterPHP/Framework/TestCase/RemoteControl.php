@@ -5,24 +5,33 @@
  */
 namespace RemoteControl;
 
-require_once 'SaunterPHP/Framework/SeleniumConnection.php';
+require_once 'SaunterPHP/Framework/Bindings/SaunterRemoteControl.php';
 require_once 'SaunterPHP/Framework/SuiteIdentifier.php';
 require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Log.php';
 
 abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_TestCase {
     static public $log;
-    static public $selenium;
     static public $verificationErrors;
+    static public $selenium;
 
     public function setUp() {
         self::$verificationErrors = array();
         self::$log = \Log::singleton('file', $GLOBALS['settings']['logname'], $this->getName());
-        self::$selenium = \SaunterPHP_Framework_SeleniumConnection::RemoteControl();
-        self::$selenium->start();
-        self::$selenium->windowMaximize();
+
+        if ($GLOBALS['settings']['sauce.ondemand']) {
+            $server_host = $GLOBALS['saucelabs']['username'] . ":" . $GLOBALS['saucelabs']['key'] . "@ondemand.saucelabs.com";
+        } else {
+            $server_host = $GLOBALS['settings']['seleniumserver'];
+        }
+        $server_port = $GLOBALS['settings']['seleniumport'];
+        $this->driver = new \SaunterPHP_Framework_Bindings_SaunterRemoteControl($GLOBALS['settings']['browser'], $GLOBALS['settings']['webserver'], $server_host, $server_port);
+        self::$selenium = $this->driver;
+
+        $this->driver->start();
+        $this->driver->windowMaximize();
         
-        $this->sessionId = self::$selenium->getEval("selenium.sessionId");
+        $this->sessionId = $this->driver->getEval("selenium.sessionId");
     }
 
     // fired after the test run but before teardown
@@ -41,7 +50,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
      */
     public function verifyCookiePresent($want) {
         try {
-            $this->assertTrue(self::$selenium->isCookiePresent($want),  $want . ' cookie is not present.');
+            $this->assertTrue($this->driver->isCookiePresent($want),  $want . ' cookie is not present.');
         } catch (\PHPUnit_Framework_AssertionFailedError $e) {
             array_push(self::$verificationErrors, $e->toString());
         }
@@ -50,7 +59,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
     public function verifyCookieNotPresent($want)
     {
       try {
-          $this->assertTrue(!self::$selenium->isCookiePresent($want), $want . ' cookie is present.');
+          $this->assertTrue(!$this->driver->isCookiePresent($want), $want . ' cookie is present.');
       } catch (\PHPUnit_Framework_AssertionFailedError $e) {
           array_push(self::$verificationErrors, $e->toString());
       }
@@ -58,13 +67,13 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
 
     public function verifyElementAvailable($element) {
         try {
-            $this->assertTrue(self::$selenium->isElementPresent($element), $element . ' element is not present.');
+            $this->assertTrue($this->driver->isElementPresent($element), $element . ' element is not present.');
         } catch (\PHPUnit_Framework_AssertionFailedError $e) {
             array_push(self::$verificationErrors, $e->toString());
         }
-        if (self::$selenium->isElementPresent($element)) {
+        if ($this->driver->isElementPresent($element)) {
             try {
-                $this->assertTrue(self::$selenium->isVisible($element), $element . ' element is not available.');
+                $this->assertTrue($this->driver->isVisible($element), $element . ' element is not available.');
             } catch (\PHPUnit_Framework_AssertionFailedError $e) {
                 array_push(self::$verificationErrors, $e->toString());
             }
@@ -73,7 +82,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
 
     public function verifyElementPresent($element) {
         try {
-            $this->assertTrue(self::$selenium->isElementPresent($element), $element . ' element is not present.');
+            $this->assertTrue($this->driver->isElementPresent($element), $element . ' element is not present.');
         } catch (\PHPUnit_Framework_AssertionFailedError $e) {
             array_push(self::$verificationErrors, $e->toString());
         }
@@ -81,7 +90,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
     
     public function verifyElementNotPresent($element) {
         try {
-            $this->assertTrue(!self::$selenium->isElementPresent($element), $element . ' element is present.');
+            $this->assertTrue(!$this->driver->isElementPresent($element), $element . ' element is present.');
         } catch (\PHPUnit_Framework_AssertionFailedError $e) {
             array_push(self::$verificationErrors, $e->toString());
         }
@@ -109,7 +118,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
     
     public function verifyLocation($relativeURL) {
         try {
-            $this->assertEquals($GLOBALS['settings']['webserver'] . $relativeURL, self::$selenium->getLocation(),  "URLs don't match with, " . $relativeURL);
+            $this->assertEquals($GLOBALS['settings']['webserver'] . $relativeURL, $this->driver->getLocation(),  "URLs don't match with, " . $relativeURL);
         } catch (\PHPUnit_Framework_AssertionFailedError $e) {
             array_push(self::$verificationErrors, $e->toString());
         }
@@ -126,7 +135,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
     public function verifyNotLocation($relativeURL)
     {
       try {
-          $this->assertNotEquals($GLOBALS['settings']['webserver'] . $relativeURL, self::$selenium->getLocation(), "URLs still match with, " . $relativeURL);
+          $this->assertNotEquals($GLOBALS['settings']['webserver'] . $relativeURL, $this->driver->getLocation(), "URLs still match with, " . $relativeURL);
       } catch (\PHPUnit_Framework_AssertionFailedError $e) {
           array_push(self::$verificationErrors, $e->toString());
       }
@@ -134,7 +143,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
     
     public function verifyNotTextRegEx($element,$pattern) {
         try {
-            $this->assertTrue(!(bool)preg_match($pattern,self::$selenium->getText($element)));
+            $this->assertTrue(!(bool)preg_match($pattern,$this->driver->getText($element)));
         } catch (\PHPUnit_Framework_AssertionFailedError $e) {
             array_push(self::$verificationErrors, $e->toString());
         }
@@ -142,7 +151,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
 
     public function verifyTextPresent($want) {
         try {
-            $this->assertTrue(self::$selenium->isTextPresent($want), $want . ' Text is not present.');
+            $this->assertTrue($this->driver->isTextPresent($want), $want . ' Text is not present.');
         } catch (\PHPUnit_Framework_AssertionFailedError $e) {
             array_push(self::$verificationErrors, $e->toString());
         }
@@ -150,7 +159,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
 
     public function verifyTextNotPresent($want) {
         try {
-            $this->assertTrue(!self::$selenium->isTextPresent($want), $want . ' Text is present.');
+            $this->assertTrue(!$this->driver->isTextPresent($want), $want . ' Text is present.');
         } catch (\PHPUnit_Framework_AssertionFailedError $e) {
             array_push(self::$verificationErrors, $e->toString());
         }
@@ -158,7 +167,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
 
     public function verifyTextRegEx($element,$pattern) {
         try {
-            $this->assertTrue((bool)preg_match($pattern,self::$selenium->getText($element)));
+            $this->assertTrue((bool)preg_match($pattern,$this->driver->getText($element)));
         } catch (\PHPUnit_Framework_AssertionFailedError $e) {
             array_push(self::$verificationErrors, $e->toString());
         }
