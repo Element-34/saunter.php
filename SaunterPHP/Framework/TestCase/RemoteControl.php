@@ -26,8 +26,8 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
             $profile_path = null;
             if (array_key_exists('profile-' . strtolower(PHP_OS), $GLOBALS['settings'])) {
                 $profile_path = $GLOBALS['settings']['saunter.base'] . DIRECTORY_SEPARATOR . 'support/profiles/' . $GLOBALS['saucelabs']['profile-' . strtolower(PHP_OS)];
-            } elseif (array_key_exists('sauce.profile', $GLOBALS['settings'])) {
-                $profile_path = $GLOBALS['settings']['saunter.base'] . DIRECTORY_SEPARATOR . 'support/profiles/' . $GLOBALS['settings']['sauce.profile'];
+            } elseif (array_key_exists('profile', $GLOBALS['settings'])) {
+                $profile_path = $GLOBALS['settings']['saunter.base'] . DIRECTORY_SEPARATOR . 'support/profiles/' . $GLOBALS['settings']['profile'];
             }
             if ($profile_path) {
                 if (is_dir($profile_path)) {
