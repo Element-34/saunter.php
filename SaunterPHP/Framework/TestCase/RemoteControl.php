@@ -9,6 +9,7 @@ require_once 'SaunterPHP/Framework/Bindings/SaunterRemoteControl.php';
 require_once 'SaunterPHP/Framework/SuiteIdentifier.php';
 require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Log.php';
+require_once 'SaunterPHP/Framework/Exception.php';
 
 abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_TestCase {
     static public $log;
@@ -21,6 +22,37 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
 
         if ($GLOBALS['settings']['sauce.ondemand']) {
             $server_host = $GLOBALS['saucelabs']['username'] . ":" . $GLOBALS['saucelabs']['key'] . "@ondemand.saucelabs.com";
+
+            $profile_path = null;
+            if (array_key_exists('profile-' . strtolower(PHP_OS), $GLOBALS['settings'])) {
+                $profile_path = $GLOBALS['settings']['saunter.base'] . DIRECTORY_SEPARATOR . 'support/profiles/' . $GLOBALS['saucelabs']['profile-' . strtolower(PHP_OS)];
+            } elseif (array_key_exists('sauce.profile', $GLOBALS['settings'])) {
+                $profile_path = $GLOBALS['settings']['saunter.base'] . DIRECTORY_SEPARATOR . 'support/profiles/' . $GLOBALS['settings']['sauce.profile'];
+            }
+            if ($profile_path) {
+                if (is_dir($profile_path)) {
+                    $hosted_path = $GLOBALS['settings']['fileserver'] . '/profiles/' . basename($profile_path) . '.zip';
+
+                    $zip = new \ZipArchive();
+
+                    if(($zip->open($profile_path . '.zip', \ZipArchive::OVERWRITE)) !== true) {
+                        throw new \SaunterPHP_Framework_Exception("Unable to create profile zip ${profile_path}");
+                    }
+
+                    $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($profile_path, $flags = \FilesystemIterator::KEY_AS_PATHNAME | \FilesystemIterator::CURRENT_AS_FILEINFO | \FilesystemIterator::SKIP_DOTS));
+                    foreach ($iterator as $key=>$value) {
+                        $zip->addFile($key, substr($key, strlen($profile_path) + 1)) or die ("ERROR: Could not add file: $key");
+                    }
+
+                    $zip->close();
+
+                    $decoded = json_decode($GLOBALS['settings']['browser'], $assoc = true);
+                    $decoded['firefox-profile-url'] = $hosted_path;
+                    $GLOBALS['settings']['browser'] = json_encode($decoded);
+                } else {
+                    throw new \SaunterPHP_Framework_Exception("Profile directory not found at ${profile_path}");
+                }
+            }
         } else {
             $server_host = $GLOBALS['settings']['seleniumserver'];
         }
