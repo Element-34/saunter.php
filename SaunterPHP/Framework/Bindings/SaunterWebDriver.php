@@ -17,18 +17,34 @@ class SaunterPHP_Framework_Bindings_SaunterWebDriver extends PHPWebDriver_WebDri
         if ($browser == 'unknown browser') {
             throw new SaunterPHP_Framework_Exception("Pretty sure you can't even get here...");
         }
-        $desired_capabilities = array_merge(
-          $additional_capabilities,
-          array('browserName' => $browser));
 
-        if ($browser_profile) {
-            $desired_capabilities['firefox_profile'] = $browser_profile->encoded();
+        $desired_capabilities = new PHPWebDriver_WebDriverDesiredCapabilities();
+
+        $decoded = json_decode($GLOBALS['settings']['browser'], true);
+        if ($decoded) {
+            $browser_string = $decoded["browser"];
+            $default_capabilities = array_merge(
+                $desired_capabilities->$browser_string,
+                $decoded
+            );
+        } else {
+            $browser_string = $GLOBALS['settings']['browser'];
+            $default_capabilities = $desired_capabilities->$browser_string;
         }
+
+        if ($browser_string == "firefox" && $browser_profile) {
+            $additional_capabilities['firefox_profile'] = $browser_profile->encoded();
+        }
+
+        $final_capabilities = array_merge(
+            $default_capabilities,
+            $additional_capabilities
+        );
 
         $results = $this->curl(
           'POST',
           '/session',
-          array('desiredCapabilities' => $desired_capabilities),
+          array('desiredCapabilities' => $final_capabilities),
           array(CURLOPT_FOLLOWLOCATION => true));
 
         return new SaunterPHP_Framework_Bindings_SaunterWebDriverSession($results['info']['url']);

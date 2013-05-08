@@ -21,8 +21,16 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
         self::$verificationErrors = array();
         self::$log = \Log::singleton('file', $GLOBALS['settings']['logname'], $this->getName());
 
+        // this is inefficient, but...
+        $decoded = json_decode($GLOBALS['settings']['browser'], true);
+        if ($decoded) {
+            $browser = $decoded["browser"];
+        } else {
+            $browser = $GLOBALS['settings']['browser'];
+        }
+
         $profile = null;
-        if ($GLOBALS['settings']['browser'] == 'firefox') {
+        if ($browser == 'firefox') {
             $profile_path = null;
             if (array_key_exists('profile-' . strtolower(PHP_OS), $GLOBALS['settings'])) {
                 $profile_path = $GLOBALS['settings']['saunter.base'] . DIRECTORY_SEPARATOR . 'support/profiles/' . $GLOBALS['settings']['profile-' . strtolower(PHP_OS)];
@@ -46,14 +54,6 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
         $this->driver = new \SaunterPHP_Framework_Bindings_SaunterWebDriver($command_executor);
         // var_dump($this->driver);
 
-        // this is inefficient, but...
-        $decoded = json_decode($GLOBALS['settings']['browser'], true);
-        if ($decoded) {
-            $browser = $decoded["browser"];
-        } else {
-            $browser = $GLOBALS['settings']['browser'];
-        }
-
         // since the config can be shared between, take out the rc *
         if (substr($browser, 0, 1) === "*") {
             $browser = substr($browser, 1);
@@ -62,20 +62,24 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
         $additional_capabilities = array();
         if ($GLOBALS['settings']['sauce.ondemand']) {
             switch ($decoded["os"]) {
-                case 'Windows 2003':
                 case 'XP':
-                    $additional_capabilities["platform"] = "XP";
+                case 'Windows XP':
+                    $additional_capabilities["platform"] = "Windows XP";
                     break;
-                case 'Windows 2008':
-                case 'VISTA':
-                    $additional_capabilities["platform"] = "VISTA";
+                case 'Windows 7':
+                    $additional_capabilities["platform"] = "Windows 7";
+                    break;
+                case 'Windows 8':
+                    $additional_capabilities["platform"] = "Windows 8";
                     break;
                 case 'OSX':
                 case 'MAC':
                     $additional_capabilities["platform"] = "MAC";
                     break;
+                case 'Android':
+                case 'Linux':
                 default:
-                    $additional_capabilities["platform"] = "LINUX";
+                    $additional_capabilities["platform"] = "Linux";
             }
             if (substr($decoded["browser-version"], -1, 1) === ".") {
                 $additional_capabilities["version"] = substr($decoded["browser-version"], 0, -1);
@@ -101,7 +105,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
             }
         }
 
-        $this->session = $this->driver->session($browser, $additional_capabilities, array(), $profile);
+        $this->session = $this->driver->session($GLOBALS['settings']['browser'], $additional_capabilities, array(), $profile);
         // var_dump($this->session);
                 
         $this->sessionId = substr($this->session->getURL(), strrpos($this->session->getURL(), "/") + 1);
