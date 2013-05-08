@@ -6,9 +6,11 @@
 namespace WebDriver;
  
 require_once 'SaunterPHP/Framework/SuiteIdentifier.php';
+require_once 'SaunterPHP/Framework/Bindings/SaunterWebDriver.php';
 require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Log.php';
 require_once 'PHPWebDriver/WebDriverProxy.php';
+require_once 'PHPWebDriver/WebDriverFirefoxProfile.php';
 require_once 'PHPBrowserMobProxy/Client.php';
 
 abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_TestCase {
@@ -18,7 +20,24 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
     public function setUp() {
         self::$verificationErrors = array();
         self::$log = \Log::singleton('file', $GLOBALS['settings']['logname'], $this->getName());
-        
+
+        $profile = null;
+        if ($GLOBALS['settings']['browser'] == 'firefox') {
+            $profile_path = null;
+            if (array_key_exists('profile-' . strtolower(PHP_OS), $GLOBALS['settings'])) {
+                $profile_path = $GLOBALS['settings']['saunter.base'] . DIRECTORY_SEPARATOR . 'support/profiles/' . $GLOBALS['settings']['profile-' . strtolower(PHP_OS)];
+            } elseif (array_key_exists('profile', $GLOBALS['settings'])) {
+                $profile_path = $GLOBALS['settings']['saunter.base'] . DIRECTORY_SEPARATOR . 'support/profiles/' . $GLOBALS['settings']['profile'];
+            }
+            if ($profile_path) {
+                if (is_dir($profile_path)) {
+                    $profile = new \PHPWebDriver_WebDriverFirefoxProfile($profile_path);
+                } else {
+                    throw new \SaunterPHP_Framework_Exception("Profile directory not found at ${profile_path}");
+                }
+            }
+        }
+
         if ($GLOBALS['settings']['sauce.ondemand']) {
             $command_executor = "http://" . $GLOBALS['saucelabs']['username'] . ":" . $GLOBALS['saucelabs']['key'] . "@ondemand.saucelabs.com:80/wd/hub";
         } else {
@@ -82,7 +101,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
             }
         }
 
-        $this->session = $this->driver->session($browser, $additional_capabilities);
+        $this->session = $this->driver->session($browser, $additional_capabilities, array(), $profile);
         // var_dump($this->session);
                 
         $this->sessionId = substr($this->session->getURL(), strrpos($this->session->getURL(), "/") + 1);
