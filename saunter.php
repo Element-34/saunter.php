@@ -117,18 +117,19 @@ if (in_array("--reset", $argv)) {
 
 require_once 'conf/saunter.inc';
 
-array_push($_SERVER['argv'], "--log-junit");
+$GLOBALS['settings']['saunter.base'] = getcwd();
 
 $timestamp = date('Y-m-d-h-i-s');
-$GLOBALS['settings']['logdir'] = 'logs' . DIRECTORY_SEPARATOR . $timestamp;
+$GLOBALS['settings']['logdir'] = $GLOBALS['settings']['saunter.base'] . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR . $timestamp;
 mkdir($GLOBALS['settings']['logdir']);
 $GLOBALS['settings']['logname'] = $GLOBALS['settings']['logdir'] . DIRECTORY_SEPARATOR . $timestamp . '.xml';
+
+array_push($_SERVER['argv'], "--log-junit");
 array_push($_SERVER['argv'], $GLOBALS['settings']['logname']);
 array_push($_SERVER['argv'], "scripts");
 
+// called in order
 register_shutdown_function('copy_logfile', $GLOBALS['settings']['logname']);
-
-$GLOBALS['settings']['saunter.base'] = getcwd();
 
 /****
  * the code in this block is covered under the Creative Commons Attribution 3.0 Unported License

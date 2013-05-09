@@ -14,18 +14,18 @@ require_once 'PHPWebDriver/WebDriverFirefoxProfile.php';
 require_once 'PHPBrowserMobProxy/Client.php';
 
 abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_TestCase {
-    static public $log;
     static public $verificationErrors;
 
     public function setUp() {
         self::$verificationErrors = array();
-        self::$log = \Log::singleton('file', $GLOBALS['settings']['logname'], $this->getName());
 
         // screenshot overhead; coupled with php overhead...
         $_inter_one = get_class($this);
         $_inter_two = explode('\\', $_inter_one);
         $this->current_class_name = end($_inter_two);
         $this->prep_screenshot_dirs();
+
+        $this->log = \Log::factory('file', $this->current_test_log_dir . DIRECTORY_SEPARATOR . 'test.log');
 
         // this is inefficient, but...
         $decoded = json_decode($GLOBALS['settings']['browser'], true);
@@ -146,16 +146,8 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
         $data = base64_decode($img);
         $success = file_put_contents($file, $data);
 
-    }    
-    // def take_named_screenshot(self, name):
-    //     method_dir = self._screenshot_prep_dirs()
-
-    //     image_path = os.path.join(method_dir, str(name) + ".png")
-    //     self.driver.get_screenshot_as_file(image_path)
-
-    //     if self.config.has_option("Saunter", "jenkins"):
-    //         if self.cf.getboolean("Saunter", "jenkins"):
-    //             sys.stdout.write(os.linesep + "[[ATTACHMENT|%s]]" % image_path + os.linesep)
+        $this->artifact_log->log(PHP_EOL . "[[ATACHEMENT|$file]]" . PHP_EOL);
+    }
 
     // /**
     //  * Verifies that the requested cookie has been set
