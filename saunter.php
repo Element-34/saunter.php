@@ -105,6 +105,51 @@ function copy_logfile($log_name) {
     copy($log_name, "logs/latest.xml");
 }
 
+function mix_in_attachments($log_name) {
+    // load the xml
+    $xml = simplexml_load_file($log_name);
+
+    // find all the logs
+    $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($GLOBALS['settings']['logdir'], $flags = \FilesystemIterator::KEY_AS_PATHNAME | \FilesystemIterator::CURRENT_AS_FILEINFO | \FilesystemIterator::SKIP_DOTS));
+    foreach ($iterator as $key=>$value) {
+        if ((substr($key, -strlen('test.log')) === 'test.log')) {
+            // iterate for our magic token
+            $lines = file($key);
+            foreach ($lines as $line_number => $line) {
+                if (!strncmp($line, '[[ATTACHMENT', strlen('[[ATTACHMENT'))) {
+                    // get the attachment path
+                    $attachment_path = substr($line, strlen('[[ATTACHMENT|'), -3);
+
+                    // chomp things into bits
+                    $parts = explode(DIRECTORY_SEPARATOR, substr($line, 0, -3));
+
+                    $class = $parts[count($parts) -3];
+                    $method = $parts[count($parts) - 2];
+
+                    // find our method entry
+                    $case_elements = $xml->xpath("(//testcase[@name=\"$method\"])");
+                    foreach ($case_elements as $case_element) {
+                        $attributes = $case_element->attributes();
+                        if ((substr((string)$attributes['class'], -strlen($class)) === $class)) {
+                            // already have stdout?
+                            $stdout = $case_element->xpath('./stdout');
+                            if (count($stdout) == 0) {
+                                $stdout = $case_element->addChild('stdout', PHP_EOL . $line . PHP_EOL);
+                            } else {
+                                $existing = (string)$stdout[0];
+                                $case_element->stdout = $existing . $line . PHP_EOL;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // write it out again
+    $xml->asXML($log_name);
+}
+
 if (in_array("--new", $argv)) {
     initialize($installed);
     exit;
@@ -129,6 +174,9 @@ array_push($_SERVER['argv'], $GLOBALS['settings']['logname']);
 array_push($_SERVER['argv'], "scripts");
 
 // called in order
+if (array_key_exists('saunter.ci', $GLOBALS['settings']) && $GLOBALS['settings']['saunter.ci'] == 'jenkins') {
+    register_shutdown_function('mix_in_attachments', $GLOBALS['settings']['logname']);
+}
 register_shutdown_function('copy_logfile', $GLOBALS['settings']['logname']);
 
 /****
