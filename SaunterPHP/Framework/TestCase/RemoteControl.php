@@ -92,7 +92,9 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
         $data = base64_decode($img);
         $success = file_put_contents($file, $data);
 
-        $this->log->log(PHP_EOL . "[[ATTACHMENT|$file]]" . PHP_EOL);
+        if (array_key_exists('saunter.ci', $GLOBALS['settings']) && $GLOBALS['settings']['saunter.ci'] == 'jenkins') {
+            $this->log->log(PHP_EOL . "[[ATTACHMENT|$file]]" . PHP_EOL);
+        }
     }
 
     public function take_numbered_screenshot() {
