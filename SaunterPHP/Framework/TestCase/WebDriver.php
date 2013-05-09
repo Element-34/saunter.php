@@ -21,6 +21,12 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
         self::$verificationErrors = array();
         self::$log = \Log::singleton('file', $GLOBALS['settings']['logname'], $this->getName());
 
+        // screenshot overhead; coupled with php overhead...
+        $_inter_one = get_class($this);
+        $_inter_two = explode('\\', $_inter_one);
+        $this->current_class_name = end($_inter_two);
+        $this->prep_screenshot_dirs();
+
         // this is inefficient, but...
         $decoded = json_decode($GLOBALS['settings']['browser'], true);
         if ($decoded) {
@@ -110,6 +116,18 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
                 
         $this->sessionId = substr($this->session->getURL(), strrpos($this->session->getURL(), "/") + 1);
         // var_dump($this->sessionId);
+    }
+
+    private function prep_screenshot_dirs() {
+        $class_dir = $GLOBALS['settings']['logdir'] . DIRECTORY_SEPARATOR . $this->current_class_name;
+        if (! is_dir($class_dir)) {
+            mkdir($class_dir);
+        }
+
+        $test_dir = $class_dir . DIRECTORY_SEPARATOR . $this->getName();
+        if (! is_dir($test_dir)) {
+            mkdir($test_dir);
+        }
     }
 
     // fired after the test run but before teardown

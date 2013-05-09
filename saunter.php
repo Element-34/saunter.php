@@ -120,8 +120,9 @@ require_once 'conf/saunter.inc';
 array_push($_SERVER['argv'], "--log-junit");
 
 $timestamp = date('Y-m-d-h-i-s');
-mkdir('logs/' . $timestamp);
-$GLOBALS['settings']['logname'] = 'logs' . DIRECTORY_SEPARATOR . $timestamp . DIRECTORY_SEPARATOR . $timestamp . '.xml';
+$GLOBALS['settings']['logdir'] = 'logs' . DIRECTORY_SEPARATOR . $timestamp;
+mkdir($GLOBALS['settings']['logdir']);
+$GLOBALS['settings']['logname'] = $GLOBALS['settings']['logdir'] . DIRECTORY_SEPARATOR . $timestamp . '.xml';
 array_push($_SERVER['argv'], $GLOBALS['settings']['logname']);
 array_push($_SERVER['argv'], "scripts");
 
