@@ -18,6 +18,7 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
 
     public function setUp() {
         self::$verificationErrors = array();
+        $this->screenshot_number = 1;
 
         // screenshot overhead; coupled with php overhead...
         $_inter_one = get_class($this);
@@ -146,7 +147,12 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
         $data = base64_decode($img);
         $success = file_put_contents($file, $data);
 
-        $this->artifact_log->log(PHP_EOL . "[[ATACHEMENT|$file]]" . PHP_EOL);
+        $this->log->log(PHP_EOL . "[[ATTACHMENT|$file]]" . PHP_EOL);
+    }
+
+    public function take_numbered_screenshot() {
+        $this->take_named_screenshot($this->screenshot_number);
+        $this->screenshot_number++;
     }
 
     // /**
