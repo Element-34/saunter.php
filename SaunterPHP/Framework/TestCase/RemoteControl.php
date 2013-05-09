@@ -84,6 +84,16 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
         }
     }
 
+    public function take_named_screenshot($name) {
+        $file = $this->current_test_log_dir . DIRECTORY_SEPARATOR . $name . '.png';
+        
+        $img = $this->session->screenshot();
+        $data = base64_decode($img);
+        $success = file_put_contents($file, $data);
+
+        $this->log->log(PHP_EOL . "[[ATTACHMENT|$file]]" . PHP_EOL);
+    }
+
     // fired after the test run but before teardown
     public function assertPostConditions() {
         $this->assertEmpty(self::$verificationErrors, implode("\n", self::$verificationErrors));
