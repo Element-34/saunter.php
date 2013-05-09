@@ -16,7 +16,7 @@
         <email>adam@element34.ca</email>
         <active>yes</active>
     </lead>
-    <date>2013-05-01</date>
+    <date>2013-05-09</date>
     <version>
         <release>1.0.15</release>
         <api>1.0.15</api>
@@ -136,9 +136,9 @@
                 <channel>pear.php.net</channel>
                 <recommended>0.4.3</recommended>
             </package>
-<!--             <package>
+           <package>
                 <name>PHPWebDriver</name>
-                <uri>http://element-34.github.com/pear/get/PHPWebDriver-1.9.0</uri>
+                <uri>http://element-34.github.com/pear/get/PHPWebDriver-1.10.0</uri>
             </package>
             <package>
                 <name>PHPBrowserMobProxy</name>
@@ -151,7 +151,7 @@
             <package>
                 <name>PHPHarchive</name>
                 <uri>http://element-34.github.com/pear/get/PHPHARchive-1.3.0</uri>
-            </package> -->
+            </package>
         </required>
     </dependencies>
     <phprelease>
