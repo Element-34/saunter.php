@@ -12,19 +12,19 @@ require_once 'Log.php';
 require_once 'SaunterPHP/Framework/Exception.php';
 
 abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_TestCase {
-    static public $log;
     static public $verificationErrors;
     static public $selenium;
 
     public function setUp() {
         self::$verificationErrors = array();
-        self::$log = \Log::singleton('file', $GLOBALS['settings']['logname'], $this->getName());
 
         // screenshot overhead; coupled with php overhead...
         $_inter_one = get_class($this);
         $_inter_two = explode('\\', $_inter_one);
         $this->current_class_name = end($_inter_two);
         $this->prep_screenshot_dirs();
+
+        $this->log = \Log::factory('file', $this->current_test_log_dir . DIRECTORY_SEPARATOR . 'test.log');
 
         if ($GLOBALS['settings']['sauce.ondemand']) {
             $server_host = $GLOBALS['saucelabs']['username'] . ":" . $GLOBALS['saucelabs']['key'] . "@ondemand.saucelabs.com";
