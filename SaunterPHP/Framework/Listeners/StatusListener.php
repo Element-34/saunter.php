@@ -26,6 +26,11 @@ class SaunterPHP_Framework_Listeners_StatusListener implements PHPUnit_Framework
     
     public function endTest(PHPUnit_Framework_Test $test, $time) {
         if (property_exists($test, "sessionId")) {
+            // get the 'final' screenshot
+            if (array_key_exists('screenshots.final', $GLOBALS['settings']) && $GLOBALS['settings']['screenshots.final']) {
+                $test->take_named_screenshot("final");
+            }
+
             // fetching the stuff from the server doesn't require the connection anymore
             if (property_exists($test, "selenium")) {
                 if (method_exists($test::$selenium, "stop")) {

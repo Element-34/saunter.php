@@ -128,6 +128,8 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
         if (! is_dir($test_dir)) {
             mkdir($test_dir);
         }
+
+        $this->current_test_log_dir = $test_dir;
     }
 
     // fired after the test run but before teardown
@@ -136,7 +138,25 @@ abstract class SaunterPHP_Framework_SaunterTestCase extends \PHPUnit_Framework_T
     }
   
     public function tearDown() { }
-    
+
+    public function take_named_screenshot($name) {
+        $file = $this->current_test_log_dir . DIRECTORY_SEPARATOR . $name . '.png';
+        
+        $img = $this->session->screenshot();
+        $data = base64_decode($img);
+        $success = file_put_contents($file, $data);
+
+    }    
+    // def take_named_screenshot(self, name):
+    //     method_dir = self._screenshot_prep_dirs()
+
+    //     image_path = os.path.join(method_dir, str(name) + ".png")
+    //     self.driver.get_screenshot_as_file(image_path)
+
+    //     if self.config.has_option("Saunter", "jenkins"):
+    //         if self.cf.getboolean("Saunter", "jenkins"):
+    //             sys.stdout.write(os.linesep + "[[ATTACHMENT|%s]]" % image_path + os.linesep)
+
     // /**
     //  * Verifies that the requested cookie has been set
     //  *
