@@ -142,7 +142,7 @@
             </package>
             <package>
                 <name>PHPBrowserMobProxy</name>
-                <uri>http://element-34.github.com/pear/get/PHPBrowserMobProxy-1.0.4</uri>
+                <uri>http://element-34.github.com/pear/get/PHPBrowserMobProxy-1.0.5</uri>
             </package>
             <package>
                 <name>Requests</name>
