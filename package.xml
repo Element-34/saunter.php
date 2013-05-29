@@ -138,7 +138,7 @@
             </package>
            <package>
                 <name>PHPWebDriver</name>
-                <uri>http://element-34.github.com/pear/get/PHPWebDriver-1.10.0</uri>
+                <uri>http://element-34.github.com/pear/get/PHPWebDriver-1.11.0</uri>
             </package>
             <package>
                 <name>PHPBrowserMobProxy</name>
