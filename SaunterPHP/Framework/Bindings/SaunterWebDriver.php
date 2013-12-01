@@ -47,7 +47,7 @@ class SaunterPHP_Framework_Bindings_SaunterWebDriver extends PHPWebDriver_WebDri
           array('desiredCapabilities' => $final_capabilities),
           array(CURLOPT_FOLLOWLOCATION => true));
 
-        return new SaunterPHP_Framework_Bindings_SaunterWebDriverSession($results['info']['url']);
+        return new SaunterPHP_Framework_Bindings_SaunterWebDriverSession($results['info']['url'] . $results['sessionId']);
     }
 }
 
